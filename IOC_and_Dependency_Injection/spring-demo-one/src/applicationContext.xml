@@ -22,5 +22,8 @@
  	<bean id="myCoach"
  		class="com.lovetocode.springdemo.TrackCoach">
  	</bean>
+ 	
+ 	<bean id="cricketCoach" class="com.lovetocode.springdemo.CricketCoach">
+ 	</bean>
         
 </beans>
