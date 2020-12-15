@@ -7,5 +7,11 @@ public class CricketCoach implements Coach {
 		// TODO Auto-generated method stub
 		return "Daily 10 overs Batting and 15 overs bowling";
 	}
+	
+	@Override
+	public String getDailyFortune() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
