@@ -20,10 +20,9 @@
 	
     <!-- Define your beans here -->   
     
-    <!-- define your dependency. In other words build all dependencies prior to instantiating myCoach-->
+    <!-- define your dependency. In other words build all dependencies prior to instantiation -->
     <bean id="myFortune" class="com.lovetocode.springdemo.HappyFortuneService">
     </bean>
-    
  	<bean id="myCoach"
  		class="com.lovetocode.springdemo.TrackCoach">
  		<constructor-arg ref="myFortune"/>
