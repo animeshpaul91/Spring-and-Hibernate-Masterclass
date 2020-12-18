@@ -8,5 +8,6 @@ public class HelloMaven {
     public static void main(String[] args) {
         log.info("Hello Info");
         log.debug("Hello Debug");
+        System.out.println("Hello");
     }
 }
