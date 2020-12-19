@@ -40,6 +40,7 @@
 
     </dependencyManagement>
 
+    <!--Reconfigure the maven compiler plugin-->
     <build>
         <plugins>
             <plugin>
