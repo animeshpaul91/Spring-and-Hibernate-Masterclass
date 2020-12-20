@@ -9,7 +9,7 @@ public class GameImpl implements Game {
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
 
     // == fields ==
-    private NumberGenerator numberGenerator;
+    private NumberGenerator NumberGenerator;
     private int guessCount = 10;
     private int number;
     private int guess;
@@ -18,19 +18,18 @@ public class GameImpl implements Game {
     private int remainingGuesses;
     private boolean validNumberRange = true;
 
-    // == constructors ==
-    public GameImpl(NumberGenerator numberGenerator) {
-        this.numberGenerator = numberGenerator;
+    // == public methods ==
+    public void setNumberGenerator(NumberGenerator numberGenerator) {
+        this.NumberGenerator = numberGenerator;
     }
 
-    // == public methods ==
     @Override
     public void reset() {
         smallest = 0;
         guess = 0;
         remainingGuesses = guessCount;
-        biggest  = numberGenerator.getMaxNumber();
-        number = numberGenerator.next();
+        biggest  = NumberGenerator.getMaxNumber();
+        number = NumberGenerator.next();
         log.debug("The Number is {}", number);
     }
 

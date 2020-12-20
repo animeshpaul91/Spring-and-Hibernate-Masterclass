@@ -6,7 +6,8 @@
 
     <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl" />
     <bean id="game" class="academy.learnprogramming.GameImpl">
-    <constructor-arg ref="numberGenerator" />
+        <property name="NumberGenerator" ref="numberGenerator" />
+        <!--property name has to match the field name in GameImpl class while ref matches the ID name of the numberGenerator bean-->
     </bean>
 
 </beans>
