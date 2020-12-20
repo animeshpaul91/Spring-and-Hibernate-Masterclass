@@ -24,7 +24,6 @@ public class Main {
 
         // Get game bean from context (container)
         Game game = context.getBean(Game.class);
-        game.reset();
 
         // close context (container)
         context.close();

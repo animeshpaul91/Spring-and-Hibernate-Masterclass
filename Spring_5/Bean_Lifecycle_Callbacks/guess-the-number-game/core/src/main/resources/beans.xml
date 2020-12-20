@@ -3,10 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--A default-init-method and a default-destroy method will enforce every bean to call its reset() and destroy() upon creation and destruction respectively-->
 
-    <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl" />
+    <bean id="numberGenerator" class="academy.learnprogramming.NumberGeneratorImpl"/>
     <bean id="game" class="academy.learnprogramming.GameImpl">
     <constructor-arg ref="numberGenerator" />
     </bean>
 
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>
 </beans>
