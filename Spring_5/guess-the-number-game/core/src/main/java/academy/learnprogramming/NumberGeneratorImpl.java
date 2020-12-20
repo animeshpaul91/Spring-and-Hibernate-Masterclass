@@ -6,7 +6,7 @@ public class NumberGeneratorImpl implements NumberGenerator{
 
     // == fields ==
     private final Random random = new Random();
-    private final int maxNumber = 100;
+    private int maxNumber = 100;
 
     // == public methods ==
     @Override
