@@ -28,6 +28,9 @@ public class Main {
 
         // get game bean from context (container)
         Game game = context.getBean(Game.class);
+        MessageGenerator messageGenerator = context.getBean(MessageGenerator.class);
+        log.info("getMainMessage() = {}", messageGenerator.getMainMessage());
+        log.info("getResultMessage() = {}", messageGenerator.getResultMessage());
 
         // close context (container)
         context.close();
