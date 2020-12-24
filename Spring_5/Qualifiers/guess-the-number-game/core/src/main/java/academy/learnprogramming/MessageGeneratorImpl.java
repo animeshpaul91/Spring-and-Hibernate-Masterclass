@@ -12,6 +12,12 @@ public class MessageGeneratorImpl implements MessageGenerator{
     // == constants ==
     private static final Logger logger = LoggerFactory.getLogger(MessageGeneratorImpl.class);
 
+    private final int guessCount;
+
+    public MessageGeneratorImpl() {
+        guessCount = 10;
+    }
+
     @Autowired
     private Game game;
 
@@ -37,7 +43,7 @@ public class MessageGeneratorImpl implements MessageGenerator{
             return "You lost. The number was " + game.getNumber();
         else if (!game.isValidNumberRange())
             return "Invalid Number range";
-        else if (game.getRemainingGuesses() == game.getGuessCount())
+        else if (game.getRemainingGuesses() == guessCount)
             return "What is your first guess?";
         else  {
             String direction = "lower";
