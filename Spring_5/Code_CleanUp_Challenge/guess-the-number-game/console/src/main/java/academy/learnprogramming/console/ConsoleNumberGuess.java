@@ -34,21 +34,21 @@ public class ConsoleNumberGuess {
 
         Scanner scanner = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
             System.out.println(messageGenerator.getMainMessage());
             System.out.println(messageGenerator.getResultMessage());
 
-            int  guess = scanner.nextInt();
+            int guess = scanner.nextInt();
             scanner.nextLine();
             game.setGuess(guess);
             game.check();
 
-            if(game.isGameWon() || game.isGameLost()) {
+            if (game.isGameWon() || game.isGameLost()) {
                 System.out.println(messageGenerator.getResultMessage());
                 System.out.println("Play again y/n?");
 
                 String playAgainString = scanner.nextLine().trim();
-                if(!playAgainString.equalsIgnoreCase("y")) {
+                if (!playAgainString.equalsIgnoreCase("y")) {
                     break;
                 }
 

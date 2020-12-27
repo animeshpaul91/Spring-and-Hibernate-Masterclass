@@ -89,12 +89,12 @@ public class GameImpl implements Game {
 
         checkValidNumberRange();
 
-        if(validNumberRange) {
-            if(guess > number) {
-                biggest = guess -1;
+        if (validNumberRange) {
+            if (guess > number) {
+                biggest = guess - 1;
             }
 
-            if(guess < number) {
+            if (guess < number) {
                 smallest = guess + 1;
             }
         }

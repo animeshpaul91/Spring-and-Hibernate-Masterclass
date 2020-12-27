@@ -26,6 +26,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
     public void init() {
         log.info("game = {}", game);
     }
+
     // == public methods ==
     @Override
     public String getMainMessage() {
@@ -39,18 +40,18 @@ public class MessageGeneratorImpl implements MessageGenerator {
     @Override
     public String getResultMessage() {
 
-        if(game.isGameWon()) {
+        if (game.isGameWon()) {
             return "You guessed it! The number was " + game.getNumber();
-        } else if(game.isGameLost()) {
+        } else if (game.isGameLost()) {
             return "You lost. The number was " + game.getNumber();
-        } else if(!game.isValidNumberRange()) {
+        } else if (!game.isValidNumberRange()) {
             return "Invalid number range!";
-        } else if(game.getRemainingGuesses() == game.getGuessCount()) {
+        } else if (game.getRemainingGuesses() == game.getGuessCount()) {
             return "What is your first guess?";
         } else {
             String direction = "Lower";
 
-            if(game.getGuess() < game.getNumber()) {
+            if (game.getGuess() < game.getNumber()) {
                 direction = "Higher";
             }
 
