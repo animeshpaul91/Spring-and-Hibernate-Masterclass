@@ -1,6 +1,6 @@
 package academy.learnprogramming.controller;
 
-import academy.learnprogramming.simpleservice.DemoService;
+import academy.learnprogramming.service.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

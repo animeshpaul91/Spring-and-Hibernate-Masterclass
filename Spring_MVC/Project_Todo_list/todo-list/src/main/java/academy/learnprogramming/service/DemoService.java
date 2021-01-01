@@ -1,4 +1,4 @@
-package academy.learnprogramming.simpleservice;
+package academy.learnprogramming.service;
 
 public interface DemoService {
     String getHelloMessage(String user);

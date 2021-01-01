@@ -1,4 +1,4 @@
-package academy.learnprogramming.simpleservice;
+package academy.learnprogramming.service;
 
 import org.springframework.stereotype.Service;
 
