@@ -2,39 +2,36 @@ package academy.learnprogramming.service;
 
 import academy.learnprogramming.model.TodoData;
 import academy.learnprogramming.model.TodoItem;
+import lombok.Getter;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service // Controllers deletegate to Service layer to get and manipulate data
 public class TodoItemServiceImpl implements TodoItemService {
 
-    private final TodoData todoData;
+    @Getter
+    private final TodoData data;
 
     public TodoItemServiceImpl() {
-        this.todoData = new TodoData();
+        this.data = new TodoData();
     }
 
     @Override
     public void addItem(TodoItem item) {
-        todoData.addItem(item);
+        data.addItem(item);
     }
 
     @Override
     public void removeItem(int id) {
-        todoData.removeItem(id);
+        data.removeItem(id);
     }
 
     @Override
     public TodoItem getItem(int id) {
-        return todoData.getItem(id);
+        return data.getItem(id);
     }
 
     @Override
     public void updateItem(TodoItem item) {
-        todoData.updateItem(item);
-    }
-
-    @Override
-    public TodoData getData() {
-        return todoData;
+        data.updateItem(item);
     }
 }
