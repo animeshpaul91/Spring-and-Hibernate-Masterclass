@@ -60,6 +60,14 @@ public class TodoItemController {
         return "redirect:/" + Mappings.ITEMS;
     }
 
+    @GetMapping(Mappings.VIEW_ITEM)
+    public String viewItem(@RequestParam int id, Model model) {
+        log.info("Viewing item with item id = {}", id);
+        TodoItem itemToView = todoItemService.getItem(id);
+        model.addAttribute(AttributeNames.VIEW_ITEM, itemToView);
+        return ViewNames.VIEW_ITEM;
+    }
+
     @PostMapping(Mappings.ADD_ITEM)
     public String processItem(@ModelAttribute(AttributeNames.TODO_ITEM) TodoItem todoItem) { // name of the property is todoItem
         log.info("todoItem from form = {}", todoItem);
