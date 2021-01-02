@@ -27,7 +27,8 @@ public class TodoItemController {
     }
 
     // == model attribute section ==
-    @ModelAttribute // the model attribute nams is the name of the class with the first letter in lowercase i.e -> todoData
+    @ModelAttribute
+    // the model attribute nams is the name of the class with the first letter in lowercase i.e -> todoData
     public TodoData todoData() {
         return todoItemService.getData();
     }
@@ -40,9 +41,15 @@ public class TodoItemController {
     }
 
     @GetMapping(Mappings.ADD_ITEM)
-    public String addEditItem(Model model) {
-        TodoItem todoItem = new TodoItem("", "", LocalDate.now());
+    public String addEditItem(@RequestParam(required = false, defaultValue = "-1") int id, Model model) {
+        log.info("Editing id = {}", id);
+        TodoItem todoItem = todoItemService.getItem(id);
+
+        if (todoItem == null) // item not present
+            todoItem = new TodoItem("", "", LocalDate.now()); // create new item
+
         model.addAttribute(AttributeNames.TODO_ITEM, todoItem);
+        log.info("Model = {}", model);
         return ViewNames.ADD_ITEM;
     }
 
@@ -56,7 +63,12 @@ public class TodoItemController {
     @PostMapping(Mappings.ADD_ITEM)
     public String processItem(@ModelAttribute(AttributeNames.TODO_ITEM) TodoItem todoItem) { // name of the property is todoItem
         log.info("todoItem from form = {}", todoItem);
-        todoItemService.addItem(todoItem);
+
+        if (todoItem.getId() == 0)
+            todoItemService.addItem(todoItem);
+        else
+            todoItemService.updateItem(todoItem);
+
         return "redirect:/" + Mappings.ITEMS;
         // this will redirect to Mapping GetMapping ITEMS i.e // http://localhost:8080/todo-list/items
     }
