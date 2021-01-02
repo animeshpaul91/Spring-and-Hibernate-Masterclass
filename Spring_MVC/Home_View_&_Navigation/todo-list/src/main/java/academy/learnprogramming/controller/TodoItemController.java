@@ -68,6 +68,11 @@ public class TodoItemController {
         return ViewNames.VIEW_ITEM;
     }
 
+    @GetMapping(Mappings.HOME)
+    public String home() {
+        return ViewNames.HOME;
+    }
+
     @PostMapping(Mappings.ADD_ITEM)
     public String processItem(@ModelAttribute(AttributeNames.TODO_ITEM) TodoItem todoItem) { // name of the property is todoItem
         log.info("todoItem from form = {}", todoItem);

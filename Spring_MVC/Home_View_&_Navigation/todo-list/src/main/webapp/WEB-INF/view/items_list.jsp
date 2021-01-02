@@ -54,6 +54,10 @@
             </tr>
         </c:forEach>
     </table>
+    <br>
+    <c:url var="homeUrl" value="${Mappings.HOME}"/>
+    <a href="${homeUrl}">Home Page</a>
+
 </div>
 </body>
 </html>

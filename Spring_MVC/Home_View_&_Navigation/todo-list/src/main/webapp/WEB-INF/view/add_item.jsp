@@ -14,7 +14,7 @@
                 <td><label>ID</label></td>
                 <td>
                     <form:input path="id" disabled="true"/>
-                    <%--the value against path should match the class field name of the object retrieved by Model Attribute exactly--%>
+                        <%--the value against path should match the class field name of the object retrieved by Model Attribute exactly--%>
                 </td>
             </tr>
             <tr>

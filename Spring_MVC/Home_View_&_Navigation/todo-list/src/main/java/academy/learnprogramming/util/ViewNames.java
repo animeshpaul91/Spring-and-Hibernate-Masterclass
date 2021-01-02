@@ -9,5 +9,6 @@ public final class ViewNames {
     public static final String VIEW_ITEM = "view_item";
 
     // == constructors ==
-    private ViewNames() {}
+    private ViewNames() {
+    }
 }
