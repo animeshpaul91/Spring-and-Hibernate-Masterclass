@@ -46,18 +46,18 @@ public class TodoItemController {
         return ViewNames.ADD_ITEM;
     }
 
+    @GetMapping(Mappings.DELETE_ITEM)
+    public String deleteItem(@RequestParam int id) {
+        log.info("Deleting item with item id = {}", id);
+        todoItemService.removeItem(id);
+        return "redirect:/" + Mappings.ITEMS;
+    }
+
     @PostMapping(Mappings.ADD_ITEM)
     public String processItem(@ModelAttribute(AttributeNames.TODO_ITEM) TodoItem todoItem) { // name of the property is todoItem
         log.info("todoItem from form = {}", todoItem);
         todoItemService.addItem(todoItem);
         return "redirect:/" + Mappings.ITEMS;
         // this will redirect to Mapping GetMapping ITEMS i.e // http://localhost:8080/todo-list/items
-    }
-
-    @GetMapping(Mappings.DELETE_ITEM)
-    public String deleteItem(@RequestParam int id) {
-        log.info("Deleting item with item id = {}", id);
-        todoItemService.removeItem(id);
-        return "redirect:/" + Mappings.ITEMS;
     }
 }
