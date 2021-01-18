@@ -1,4 +1,4 @@
-package academy.learnprogramming.console;
+package academy.learnprogramming;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
