@@ -5,7 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+// Hence it scans all beans
+@SpringBootApplication //Automatically enables scanning to use this class as configuration class
 public class Main {
 
     private static final Logger log = LoggerFactory.getLogger(Main.class);
