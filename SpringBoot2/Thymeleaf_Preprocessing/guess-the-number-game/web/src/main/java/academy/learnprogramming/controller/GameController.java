@@ -36,8 +36,8 @@ public class GameController {
         return ViewNames.PLAY;
     }
 
-    @PostMapping(GameMappings.PLAY)
-    public String processMessage(@RequestParam int guess) {
+    @PostMapping(GameMappings.PLAY) // this has to match the form action name in the template
+    public String processMessage(@RequestParam int guess) { // the parameter name has to match the input ID in the template
         log.info("Guess = {}", guess);
         gameService.checkGuess(guess);
         return GameMappings.REDIRECT_PLAY;
