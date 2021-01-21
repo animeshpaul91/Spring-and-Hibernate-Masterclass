@@ -40,6 +40,17 @@ public class GameController {
     public String processMessage(@RequestParam int guess) { // the parameter name has to match the input ID in the template
         log.info("Guess = {}", guess);
         gameService.checkGuess(guess);
+        return gameService.isGameOver() ? ViewNames.GAME_OVER : GameMappings.REDIRECT_PLAY;
+    }
+
+    @GetMapping(GameMappings.RESTART)
+    public String restart() {
+        gameService.reset();
         return GameMappings.REDIRECT_PLAY;
+    }
+
+    @GetMapping(GameMappings.HOME)
+    public String home() {
+        return ViewNames.HOME;
     }
 }
