@@ -9,11 +9,14 @@
     <h1>Welcome to Guess The Number Game</h1>
     <h3>
         <a th:href="@{__${T(academy.learnprogramming.util.GameMappings).PLAY}__}"
-        th:text="Play"
-        href="play.html">
+           th:text="Play"
+           href="play.html">
             Click to Play
         </a>
     </h3>
+    <footer th:replace="~{fragments/footer::footerFragment}">
+        <p>Created by the Learn Programming Academy</p>
+    </footer>
 </div>
 </body>
 </html>
