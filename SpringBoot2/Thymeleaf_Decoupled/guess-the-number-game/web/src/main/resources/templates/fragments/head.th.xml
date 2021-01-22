@@ -1,6 +1,6 @@
 <xml lang="en" xmlns:th="http://www.thymeleaf.org">
     <thlogic>
         <attr sel="#headId"
-              th:fragment="headFragment" />
+              th:fragment="headFragment"/>
     </thlogic>
 </xml>
