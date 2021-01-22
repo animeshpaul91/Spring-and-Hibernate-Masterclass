@@ -1,0 +1,6 @@
+<xml lang="en" xmlns:th="http://www.thymeleaf.org">
+    <thlogic>
+        <attr sel="#footerId"
+              th:fragment="footerFragment"/>
+    </thlogic>
+</xml>
