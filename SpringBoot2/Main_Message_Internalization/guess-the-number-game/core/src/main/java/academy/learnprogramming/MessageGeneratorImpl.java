@@ -53,7 +53,6 @@ public class MessageGeneratorImpl implements MessageGenerator {
             return "What is your first guess?";
         } else {
             String direction = "Lower";
-
             if (game.getGuess() < game.getNumber()) {
                 direction = "Higher";
             }
