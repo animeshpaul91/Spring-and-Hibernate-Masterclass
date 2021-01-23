@@ -17,6 +17,7 @@ public class MessageGeneratorImpl implements MessageGenerator {
     // == fields ==
     private final Game game;
     private final MessageSource messageSource;
+    //MessageSource is an interface for support for parameterization and Internationalization.
 
     @Autowired
     public MessageGeneratorImpl(Game game, MessageSource messageSource) {
