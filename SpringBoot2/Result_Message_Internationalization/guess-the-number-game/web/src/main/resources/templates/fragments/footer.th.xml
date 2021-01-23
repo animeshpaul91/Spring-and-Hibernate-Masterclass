@@ -1,0 +1,7 @@
+<xml lang="en" xmlns:th="http://www.thymeleaf.org">
+    <thlogic>
+        <attr sel="#footerId"
+              th:fragment="footerFragment"/>
+        <attr sel="#created-by" th:text="|#{game.createdBy} Learn Programming Academy|"/>
+    </thlogic>
+</xml>

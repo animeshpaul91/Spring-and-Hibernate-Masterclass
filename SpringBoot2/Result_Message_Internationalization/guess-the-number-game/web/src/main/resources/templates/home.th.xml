@@ -1,0 +1,11 @@
+<xml lang="en" xmlns:th="http://www.thymeleaf.org">
+    <thlogic>
+        <attr sel="#headId"
+              th:replace="~{fragments/head :: headFragment}"/>
+        <attr sel="#welcome" th:text="#{game.welcome}"/>
+        <attr sel="#anchor-tag"
+              th:href="@{__${T(academy.learnprogramming.util.GameMappings).PLAY}__}" th:text="#{game.play}"/>
+        <attr sel="#footerId"
+              th:replace="~{fragments/footer::footerFragment}"/>
+    </thlogic>
+</xml>
