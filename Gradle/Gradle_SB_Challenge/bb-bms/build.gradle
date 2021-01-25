@@ -11,7 +11,7 @@ buildscript {
 }
 
 allprojects {
-	group = 'academy.learnprogramming.bbbms'
+	group = 'bbbms.bbbms'
 	version = '1.0.0-SNAPSHOT'
 }
 
