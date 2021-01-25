@@ -1,0 +1,2 @@
+// defines the configuration for the Hierarchy of the Project
+rootProject.name = 'gradle-demo'
