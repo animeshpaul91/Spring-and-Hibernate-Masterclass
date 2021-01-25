@@ -1,0 +1,40 @@
+buildscript {
+	ext {
+		springBootVersion = '2.4.2'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+allprojects {
+	group = 'bbbms.bbbms'
+	version = '1.0.0-SNAPSHOT'
+}
+
+subprojects {
+	// plugins will be applied only to sub projects and not to root projects
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'io.spring.dependency-management'
+
+	sourceCompatibility = 11
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		annotationProcessor("org.projectlombok:lombok")
+		compileOnly('org.projectlombok:lombok')
+	}
+
+	dependencyManagement {
+		imports {
+			mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
+		}
+	}
+}
