@@ -18,6 +18,11 @@ public class SetterDemoApp {
 		System.out.println(theCoach.getDailyFortune());
 		System.out.println(theCoach.getTeam());
 		System.out.println(theCoach.getEmailAddress());
+		
+		GolfCoach golfCoach = context.getBean("golfCoach", GolfCoach.class);
+		System.out.println(golfCoach.getDailyWorkout());
+		System.out.println(golfCoach.getDailyFortune());
+		
 		// close the context
 		context.close();
 
