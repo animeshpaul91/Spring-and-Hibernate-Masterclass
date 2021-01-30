@@ -23,12 +23,15 @@
     <!-- define your dependency. In other words build all dependencies prior to instantiation -->
     <bean id="myFortune" class="com.lovetocode.springdemo.HappyFortuneService">
     </bean>
+    
  	<bean id="myCoach"
  		class="com.lovetocode.springdemo.TrackCoach">
  		<constructor-arg ref="myFortune"/>
  	</bean>
  	
  	<bean id="cricketCoach" class="com.lovetocode.springdemo.CricketCoach">
+	<!-- set up setter injection -->
+	<property name="fortuneService" ref="myFortune"/>
  	</bean>
         
 </beans>
