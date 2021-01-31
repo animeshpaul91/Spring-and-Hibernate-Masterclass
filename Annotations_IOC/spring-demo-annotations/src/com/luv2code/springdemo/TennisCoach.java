@@ -2,7 +2,8 @@ package com.luv2code.springdemo;
 
 import org.springframework.stereotype.Component;
 
-@Component("thatSillyCoach") // Spring will automatically register this bean with the bean ID thatSillyCoach
+@Component // Spring will automatically register this bean with the default bean ID tennisCoach (camelcased)
+// else you can specify a custom bean ID in parenthesis after the annotation.
 public class TennisCoach implements Coach {
 
 	@Override
