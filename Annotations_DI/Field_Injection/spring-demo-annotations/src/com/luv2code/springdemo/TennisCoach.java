@@ -7,12 +7,8 @@ import org.springframework.stereotype.Component;
 // else you can specify a custom bean ID in parenthesis after the annotation.
 public class TennisCoach implements Coach {
 
-	private FortuneService fortuneService;
-	
 	@Autowired
-	public TennisCoach(FortuneService fortuneService) {
-		this.fortuneService = fortuneService;
-	}
+	private FortuneService fortuneService;
 
 	@Override
 	public String getDailyWorkout() { 
