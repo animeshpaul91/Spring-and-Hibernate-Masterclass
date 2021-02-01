@@ -10,6 +10,9 @@
 	<!-- add entry to enable component scanning -->
 	<context:component-scan base-package="com.luv2code.springdemo"/>
 	<!-- Spring scans for Components from base package com.luv2code.springdemo -->
+	<!-- External Properties file -->
+	<context:property-placeholder location="classpath:sport.properties"/>
+	
 	
 	<bean id="myLoggerConfig" class="com.luv2code.springdemo.MyLoggerConfig" init-method="initLogger">
 	<property name="rootLoggerLevel" value="FINE"/>
