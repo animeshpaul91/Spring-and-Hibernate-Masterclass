@@ -15,6 +15,9 @@ public class SportConfig {
 	// define bean for our swim coach and inject dependency
 	@Bean
 	public Coach swimCoach() {
-		return new SwimCoach(sadFortuneService());
+		return new SwimCoach(sadFortuneService()); // constructor injection. 
+		/* only first invocation creates the instance and registers it with the Spring container.
+		 *  subsequent invocations only return an instance of the bean in memory (from the spring container)
+		 */
 	}
 }
