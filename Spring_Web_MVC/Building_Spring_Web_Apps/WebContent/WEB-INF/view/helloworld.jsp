@@ -6,8 +6,11 @@
 <body>
 
 <h2> Hello World of Spring! </h2>
-<br></br>
+
+<br><br>
 <h2> Student Name: ${param.studentName} </h2>
+<br><br>
+<h2> The Message: ${message} </h2>
 
 </body>
 
