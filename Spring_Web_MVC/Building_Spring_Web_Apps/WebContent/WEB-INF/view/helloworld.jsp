@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h2> Hello World of Spring </h2>
+<h2> Hello World of Spring! </h2>
 <br></br>
 <h2> Student Name: ${param.studentName} </h2>
 
