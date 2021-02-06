@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title> Hello World - Name Page </title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/helloworld.css">
 </head>
 <body>
 

@@ -16,8 +16,11 @@
 
 	<!-- Step 4: Add support for conversion, formatting and validation of form data-->
 	<mvc:annotation-driven/>
+	
+	<!-- Step 5: Add support for static content in JSP (CSS, Images, Javascript) -->
+	<mvc:resources mapping="/resources/**" location="/resources/" /> 
 
-	<!-- Step 5: Define Spring MVC view resolver -->
+	<!-- Step 6: Define Spring MVC view resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
