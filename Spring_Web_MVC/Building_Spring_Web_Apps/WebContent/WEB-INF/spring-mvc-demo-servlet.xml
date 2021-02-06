@@ -14,7 +14,7 @@
 	<!-- Step 3: Add support for component scanning -->
 	<context:component-scan base-package="com.luv2code.springdemo" />
 
-	<!-- Step 4: Add support for conversion, formatting and validation support -->
+	<!-- Step 4: Add support for conversion, formatting and validation of form data-->
 	<mvc:annotation-driven/>
 
 	<!-- Step 5: Define Spring MVC view resolver -->
@@ -22,6 +22,7 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
+		<!-- Spring MVC will automatically prepend the prefix and append the suffix -->
 	</bean>
 
 </beans>
