@@ -4,7 +4,7 @@
 
 <html>
 <head>
-
+	<title> Student Registration Form </title>
 </head>
 <body>
 <!--  When the form gets loaded the getters on Student class are called. When the form gets 
@@ -16,7 +16,7 @@
 		<br><br>
 		Last Name: <form:input path="lastName" /> <!-- lastName is a property of Student Class -->
 		<br><br>
-		<input type="submit" value="submit">
+		<input type="submit" value="Submit">
 	
 	</form:form>
 
