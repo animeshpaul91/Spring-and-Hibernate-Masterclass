@@ -20,7 +20,7 @@
 		<br><br>		
 		<form:select path="country"> <!-- path is the field which the data binds to. calls setCountry on submission -->
 			
-			<form:options items="${student.countryOptions}" /> <!-- this will call the getcountryOptions() -->
+			<form:options items="${theCountryOptions}" /> <!-- this will call the getcountryOptions() -->
 						
 		</form:select>
 		<br><br>
