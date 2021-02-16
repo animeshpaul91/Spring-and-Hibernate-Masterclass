@@ -14,7 +14,7 @@ public class DateUtils {
 		return date;
 	}
 	
-	public static String formatDate(Date date) {
+	public static String formatDate(Date date) { // not being used in project
 		return date != null ? formatter.format(date): null;
 	}
 			
