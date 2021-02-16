@@ -21,7 +21,7 @@ public class PrimaryKeyDemo {
 			// create 3 new students
 			System.out.println("Creating 3 new employee objects");
 
-			// create a Employee object			
+			// create a Employee object
 			Employee employee1 = new Employee("John", "Doe", "jdoe@gmail.com", "Amazon.com");
 			Employee employee2 = new Employee("Mary", "Jane", "mjane@gmail.com", "Google");
 			Employee employee3 = new Employee("Ashley", "Smith", "asmith@gmail.com", "Oracle");
@@ -30,7 +30,7 @@ public class PrimaryKeyDemo {
 			session.beginTransaction();
 
 			// save the student object
-			System.out.println("Saving the employees");			
+			System.out.println("Saving the employees");
 			session.save(employee1);
 			session.save(employee2);
 			session.save(employee3);

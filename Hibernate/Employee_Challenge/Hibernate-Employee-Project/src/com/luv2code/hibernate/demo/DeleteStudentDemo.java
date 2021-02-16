@@ -35,13 +35,13 @@ public class DeleteStudentDemo {
 
 			// commit the transaction
 			session.getTransaction().commit();
-			
+
 			// Alternate Approach
 			session = factory.getCurrentSession();
 			session.beginTransaction();
 			System.out.println("Deleting Employee with id=5");
 			session.createQuery("delete from Employee where id=6").executeUpdate();
-			
+
 			// commit the transaction
 			session.getTransaction().commit();
 
