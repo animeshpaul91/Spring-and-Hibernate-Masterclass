@@ -28,3 +28,8 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 select * from employee;
+
+alter table student
+add column `date_of_birth` datetime null after last_name;
+
+delete from student where id=1;
