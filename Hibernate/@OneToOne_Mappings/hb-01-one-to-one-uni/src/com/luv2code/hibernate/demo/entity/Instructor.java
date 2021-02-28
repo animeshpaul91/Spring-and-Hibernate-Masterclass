@@ -33,7 +33,7 @@ public class Instructor {
 	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name="enail")
+	@Column(name="email")
 	private String email;
 	
 	@OneToOne(cascade=CascadeType.ALL)

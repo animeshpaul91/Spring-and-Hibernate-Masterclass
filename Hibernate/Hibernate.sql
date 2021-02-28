@@ -33,3 +33,6 @@ alter table student
 add column `date_of_birth` datetime null after last_name;
 
 delete from student where id=1;
+
+select * from instructor;
+select * from instructor_detail;
