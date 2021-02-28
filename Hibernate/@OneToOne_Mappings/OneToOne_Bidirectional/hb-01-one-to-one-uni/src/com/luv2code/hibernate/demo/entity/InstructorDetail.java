@@ -34,7 +34,7 @@ public class InstructorDetail {
 	// add new field for instructor (also add getters and setters)
 	// add @OneToOne annotation 
 	@OneToOne(mappedBy="instructorDetail", cascade=CascadeType.ALL) // Refers to instructorDetail property in Instructor class
-	private Instructor instructor;
+	private Instructor instructor; // this wll be the same instructor instance which has a instructorDetail property
 	
 	public InstructorDetail() {
 	}
