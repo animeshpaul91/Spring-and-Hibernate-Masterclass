@@ -31,7 +31,7 @@ public class GetInstructorDetailDemo {
 
 			// get instsructor detail object 
 			int id = 3;
-			InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);			
+			InstructorDetail instructorDetail = session.get(InstructorDetail.class, id); // will return null if id is invalid			
 			
 			// print instructor detail
 			System.out.println("Instructor Detail: " + instructorDetail);
@@ -43,8 +43,14 @@ public class GetInstructorDetailDemo {
 			session.getTransaction().commit();
 			System.out.println("Done!!");
 		}
+		
+		catch(Exception exc) {
+			exc.printStackTrace();
+		}
 
 		finally {
+			// handle leak issue
+			session.close();
 			factory.close();
 		}
 	}
