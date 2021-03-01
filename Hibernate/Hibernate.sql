@@ -36,3 +36,7 @@ delete from student where id=1;
 
 select * from instructor;
 select * from instructor_detail;
+
+select * from instructor;
+select * from instructor_detail;
+select * from course;
