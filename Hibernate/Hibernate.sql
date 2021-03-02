@@ -40,3 +40,5 @@ select * from instructor_detail;
 select * from instructor;
 select * from instructor_detail;
 select * from course;
+
+select * from review;
