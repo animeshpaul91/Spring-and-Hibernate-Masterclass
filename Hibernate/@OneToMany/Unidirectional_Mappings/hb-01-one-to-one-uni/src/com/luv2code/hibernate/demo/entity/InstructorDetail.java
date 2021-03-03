@@ -10,36 +10,38 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="instructor_detail")
+@Table(name = "instructor_detail")
 public class InstructorDetail {
 
-	// annotate the class as an entity and map it to a db table	
-	// define the fields 
+	// annotate the class as an entity and map it to a db table
+	// define the fields
 	// annotate the fields with db column names
 	// create constructors
 	// generate getters and setters
 	// generate toString method
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="youtube_channel")
+
+	@Column(name = "youtube_channel")
 	private String youtubeChannel;
-	
-	@Column(name="hobby")
+
+	@Column(name = "hobby")
 	private String hobby;
-	
+
 	// add new field for instructor (also add getters and setters)
-	// add @OneToOne annotation 
-	@OneToOne(mappedBy="instructorDetail", 
-			cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
-	// Refers to instructorDetail property in Instructor class will fetch the join column annotation to get its own instructor_detail_id
+	// add @OneToOne annotation
+	@OneToOne(mappedBy = "instructorDetail", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
+	// Refers to instructorDetail property in Instructor class will fetch the join
+	// column annotation to get its own instructor_detail_id
 	// that's how it gets the right instructor instance
-	
-	private Instructor instructor; // this wll be the same instructor instance which has a instructorDetail property
-	
+
+	private Instructor instructor; // this wll be the same instructor instance which has a instructorDetail
+									// property
+
 	public InstructorDetail() {
 	}
 
@@ -71,7 +73,7 @@ public class InstructorDetail {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
-	
+
 	public Instructor getInstructor() {
 		return instructor;
 	}
