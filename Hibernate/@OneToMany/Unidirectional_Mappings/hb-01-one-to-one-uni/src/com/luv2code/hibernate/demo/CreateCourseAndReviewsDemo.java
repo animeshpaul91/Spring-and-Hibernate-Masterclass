@@ -16,10 +16,8 @@ public class CreateCourseAndReviewsDemo {
 		// create session factory
 
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.addAnnotatedClass(Course.class)
-				.addAnnotatedClass(Review.class)
-				.buildSessionFactory();
+				.addAnnotatedClass(InstructorDetail.class).addAnnotatedClass(Course.class)
+				.addAnnotatedClass(Review.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -27,31 +25,31 @@ public class CreateCourseAndReviewsDemo {
 		try {
 			// start the transaction
 			session.beginTransaction();
-			
+
 			// create a course
 			Course course = new Course("Pacman - How to Score One Million Points");
-			
+
 			// add some reviews
 			course.addReview(new Review("Great Course. Loved it!"));
 			course.addReview(new Review("Cool Course, job well done!"));
 			course.addReview(new Review("What a dumb course, you are an idiot!"));
-			
-			// save the course and leverage the cascade all 
+
+			// save the course and leverage the cascade all
 			System.out.println("Saving the course");
 			System.out.println(course);
 			System.out.println(course.getReviews());
-			
+
 			session.save(course);
-			
+
 			// commit transaction
 			session.getTransaction().commit();
 		}
 
-		catch(NullPointerException nullPointerException) {
+		catch (NullPointerException nullPointerException) {
 			nullPointerException.printStackTrace();
 		}
-		
-		finally {			
+
+		finally {
 			session.close();
 			factory.close();
 		}
