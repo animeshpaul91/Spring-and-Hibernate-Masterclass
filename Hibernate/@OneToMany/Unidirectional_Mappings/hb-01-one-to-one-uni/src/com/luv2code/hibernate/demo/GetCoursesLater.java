@@ -26,39 +26,43 @@ public class GetCoursesLater {
 		try {
 			// start the transaction
 			session.beginTransaction();
-			
+
 			// Option -2 Query with HQL
 
 			int id = 1;
 			Instructor instructor = session.get(Instructor.class, id);
-			
+
 			System.out.println("Instructor: " + instructor);
-			
+
 			// commit transaction
 			session.getTransaction().commit();
-			
+
 			// close the session
 			session.close();
 			System.out.println("\n The Session is now closed\n");
-			
-			// opening new session 
+
+			// opening new session
 			session = factory.getCurrentSession();
 			session.beginTransaction();
-			
-			Query<Course> query = session.createQuery("select c from Course c "													   
-													    + "where c.instructor.id=:theInstructorId",
-													    Course.class); // will retrieve everything in memory
+
+			Query<Course> query = session
+					.createQuery("select c from Course c " + "where c.instructor.id=:theInstructorId", Course.class); // will
+																														// retrieve
+																														// everything
+																														// in
+																														// memory
 			// set parameter on query
 			query.setParameter("theInstructorId", id);
 			List<Course> courses = query.getResultList();
-						
-			System.out.println("luv2code: Courses: " + courses); // still can access lazy data even after session.close 
-			
+
+			System.out.println("luv2code: Courses: " + courses); // still can access lazy data even after session.close
+
 			instructor.setCourses(courses);
-			
-			System.out.println("Instructor's Courses: " + courses); // still can access lazy data even after session.close
+
+			System.out.println("Instructor's Courses: " + courses); // still can access lazy data even after
+																	// session.close
 			session.getTransaction().commit();
-			
+
 			System.out.println("Done!");
 		}
 

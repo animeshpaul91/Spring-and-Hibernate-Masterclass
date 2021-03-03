@@ -30,7 +30,7 @@ public class EagerLazyDemo {
 			System.out.println("luv2code: Instructor: " + instructor);
 
 			// Get this instructor's courses
-			
+
 			// Option1: call getter method while session is still open
 			System.out.println("luv2code: Courses: " + instructor.getCourses()); // in lazy loading this is the point
 			// where courses will be queried by hibernate. It requires the same session to
@@ -39,7 +39,7 @@ public class EagerLazyDemo {
 			// commit transaction
 			session.getTransaction().commit();
 			session.close();
-			
+
 			System.out.println("\n The Session is now closed\n");
 			System.out.println("luv2code: Courses: " + instructor.getCourses()); // this will work fine now
 
