@@ -16,27 +16,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="course")
+@Table(name = "course")
 public class Course {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="title")
+
+	@Column(name = "title")
 	private String title;
-	
-	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	@JoinColumn(name="instructor_id") // @JoinColumn is a column that is always in the same table. Its the foreign key. Here its instructor_id
+
+	@ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	@JoinColumn(name = "instructor_id") // @JoinColumn is a column that is always in the same table. Its the foreign
+										// key. Here its instructor_id
 	private Instructor instructor;
-	
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="course_id") // in OneToMany Unidirectional Mapping foreign key is at the target table
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "course_id") // in OneToMany Unidirectional Mapping foreign key is at the target table
 	private List<Review> reviews;
-	
+
 	public Course() {
-		
+
 	}
 
 	public Course(String title) {
@@ -79,14 +80,13 @@ public class Course {
 	public void addReview(Review review) {
 		if (reviews == null)
 			reviews = new ArrayList<>();
-		
+
 		reviews.add(review);
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "Course [id=" + id + ", title=" + title + "]";
 	}
-	
+
 }
