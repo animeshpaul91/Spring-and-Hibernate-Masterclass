@@ -15,9 +15,7 @@ public class GetInstructorCoursesDemo {
 		// create session factory
 
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.addAnnotatedClass(Course.class)
-				.buildSessionFactory();
+				.addAnnotatedClass(InstructorDetail.class).addAnnotatedClass(Course.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -25,24 +23,24 @@ public class GetInstructorCoursesDemo {
 		try {
 			// start the transaction
 			session.beginTransaction();
-			
+
 			int id = 1;
 			Instructor instructor = session.get(Instructor.class, id);
-			
+
 			System.out.println("Instructor: " + instructor);
-			
+
 			// Get this instructor's courses
 			System.out.println("Courses: " + instructor.getCourses());
-			
+
 			// commit transaction
 			session.getTransaction().commit();
 		}
 
-		catch(NullPointerException nullPointerException) {
+		catch (NullPointerException nullPointerException) {
 			nullPointerException.printStackTrace();
 		}
-		
-		finally {			
+
+		finally {
 			session.close();
 			factory.close();
 		}

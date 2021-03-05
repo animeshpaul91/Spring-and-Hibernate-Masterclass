@@ -18,8 +18,7 @@ public class DeleteDemo {
 		// create session factory
 
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.buildSessionFactory();
+				.addAnnotatedClass(InstructorDetail.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -33,13 +32,14 @@ public class DeleteDemo {
 			int id = 1;
 			Instructor instructor = session.get(Instructor.class, id);
 			System.out.println("Found Instructor: " + instructor);
-			
+
 			// delete the instructor
 			if (instructor != null) {
 				System.out.println("Deleting: " + instructor);
-				session.delete(instructor); // will also delete the corresponding details object because of CascadeType.ALL
+				session.delete(instructor); // will also delete the corresponding details object because of
+											// CascadeType.ALL
 			}
-			
+
 			// commit transaction
 			session.getTransaction().commit();
 			System.out.println("Done!!");

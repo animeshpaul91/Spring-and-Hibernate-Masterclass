@@ -15,9 +15,7 @@ public class DeleteCourseDemo {
 		// create session factory
 
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.addAnnotatedClass(Course.class)
-				.buildSessionFactory();
+				.addAnnotatedClass(InstructorDetail.class).addAnnotatedClass(Course.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -25,22 +23,22 @@ public class DeleteCourseDemo {
 		try {
 			// start the transaction
 			session.beginTransaction();
-			
+
 			int id = 10;
 			Course course = session.get(Course.class, id);
-			
+
 			System.out.println("Deleting Course: " + course);
 			session.delete(course);
-			
+
 			// commit transaction
 			session.getTransaction().commit();
 		}
 
-		catch(NullPointerException nullPointerException) {
+		catch (NullPointerException nullPointerException) {
 			nullPointerException.printStackTrace();
 		}
-		
-		finally {			
+
+		finally {
 			session.close();
 			factory.close();
 		}

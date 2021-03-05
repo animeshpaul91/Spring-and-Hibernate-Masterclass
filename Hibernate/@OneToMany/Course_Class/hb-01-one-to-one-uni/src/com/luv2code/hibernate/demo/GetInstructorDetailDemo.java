@@ -18,8 +18,7 @@ public class GetInstructorDetailDemo {
 		// create session factory
 
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Instructor.class)
-				.addAnnotatedClass(InstructorDetail.class)
-				.buildSessionFactory();
+				.addAnnotatedClass(InstructorDetail.class).buildSessionFactory();
 
 		// create session
 		Session session = factory.getCurrentSession();
@@ -29,22 +28,23 @@ public class GetInstructorDetailDemo {
 			// start the transaction
 			session.beginTransaction();
 
-			// get instsructor detail object 
+			// get instsructor detail object
 			int id = 3;
-			InstructorDetail instructorDetail = session.get(InstructorDetail.class, id); // will return null if id is invalid			
-			
+			InstructorDetail instructorDetail = session.get(InstructorDetail.class, id); // will return null if id is
+																							// invalid
+
 			// print instructor detail
 			System.out.println("Instructor Detail: " + instructorDetail);
-			
-			//print the associated instructor
+
+			// print the associated instructor
 			System.out.println("The Assocciated Instructor: " + instructorDetail.getInstructor());
-			
+
 			// commit transaction
 			session.getTransaction().commit();
 			System.out.println("Done!!");
 		}
-		
-		catch(Exception exc) {
+
+		catch (Exception exc) {
 			exc.printStackTrace();
 		}
 
