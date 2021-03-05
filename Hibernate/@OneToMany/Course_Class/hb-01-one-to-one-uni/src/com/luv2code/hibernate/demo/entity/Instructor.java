@@ -15,43 +15,43 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="instructor")
+@Table(name = "instructor")
 public class Instructor {
-	
-	// annotate the class as an entity and map it to a db table	
-	// define the fields 
+
+	// annotate the class as an entity and map it to a db table
+	// define the fields
 	// annotate the fields with db column names
 	// ** set up relationship between instructor and instructor detail
 	// create constructors
 	// generate getters and setters
 	// generate toString method
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	@Column(name="email")
+
+	@Column(name = "email")
 	private String email;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="instructor_detail_id") // configured on the instructor table via db script foreign key
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "instructor_detail_id") // configured on the instructor table via db script foreign key
 	// @JoinColumn is always used on foreign key
 	private InstructorDetail instructorDetail;
-	
-	@OneToMany(mappedBy="instructor", 
-				cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
+
+	@OneToMany(mappedBy = "instructor", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+			CascadeType.REFRESH })
 	// Refers to the instructor property in the Course class
 	private List<Course> courses;
-	
+
 	public Instructor() {
-		
+
 	}
 
 	public Instructor(String firstName, String lastName, String email) {
@@ -108,13 +108,13 @@ public class Instructor {
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-	
+
 	// add convenience methods for bi directional relationship
-	
+
 	public void add(Course course) {
 		if (courses == null)
 			courses = new ArrayList<>();
-		
+
 		courses.add(course);
 		course.setInstructor(this); // set up two way (bidirectional) connection/ relationship
 	}
