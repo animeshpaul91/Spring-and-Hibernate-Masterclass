@@ -35,9 +35,6 @@ public class Student { // Entity Class
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "date_of_birth")
-	@Temporal(TemporalType.DATE)
-	private Date dateOfBirth;
 
 	@ManyToMany(fetch=FetchType.LAZY, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	@JoinTable(name="course_student",
@@ -50,11 +47,10 @@ public class Student { // Entity Class
 
 	}
 
-	public Student(String firstName, String lastName, String email, Date dateOfBirth) {
+	public Student(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
-		this.dateOfBirth = dateOfBirth;
 	}
 
 	public int getId() {
@@ -89,14 +85,6 @@ public class Student { // Entity Class
 		this.email = email;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public List<Course> getCourses() {
 		return courses;
 	}
@@ -108,6 +96,6 @@ public class Student { // Entity Class
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", dateOfBirth=" + dateOfBirth + "]";
+				+ "]";
 	}
 }
