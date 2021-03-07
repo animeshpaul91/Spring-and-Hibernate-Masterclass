@@ -29,7 +29,7 @@
 
     <!-- Step 1: Define Database DataSource / connection pool (How to connect to DB) -->
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-          destroy-method="close">
+          destroy-method="close"> <!-- myDataSource is a bean which has all DB connection metadata -->
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/web_customer_tracker?useSSL=false&amp;serverTimezone=UTC" />
         <property name="user" value="animesh" />
@@ -44,6 +44,7 @@
     <!-- Step 2: Setup Hibernate session factory Session Factory configuration-->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<!-- sessionFactory is another bean which needs the datasource. myDataSource bean has been injected into property name dataSource -->
 		<property name="dataSource" ref="myDataSource" />
 		<property name="packagesToScan" value="com.luv2code.springdemo.entity" />
 		<property name="hibernateProperties">
