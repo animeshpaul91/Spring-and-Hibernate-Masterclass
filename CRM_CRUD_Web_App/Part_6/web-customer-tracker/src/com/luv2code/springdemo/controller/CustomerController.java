@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.luv2code.springdemo.entity.Customer;
 import com.luv2code.springdemo.service.CustomerService;
+import com.luv2code.springdemo.util.SortUtils;
 
 @Controller
 @RequestMapping("/customer")
@@ -24,12 +25,19 @@ public class CustomerController {
 	private CustomerService customerService;
 
 	@GetMapping("/list")
-	public String listCustomers(Model model) {
+	public String listCustomers(@RequestParam(required = false) String sort, Model model) {
 
-		// get the customers from the DAO
-		List<Customer> customers = customerService.getCustomers();
+		List<Customer> customers = null;
 
-		// add the customers to the model
+		if (sort != null) {
+			int sortField = Integer.parseInt(sort);
+			customers = customerService.getCustomers(sortField);
+		}
+
+		else {
+			customers = customerService.getCustomers(SortUtils.LAST_NAME);
+		}
+
 		model.addAttribute("customers", customers);
 
 		return "list-customers";
@@ -49,7 +57,7 @@ public class CustomerController {
 
 		// save the customer using our service
 		customerService.saveCustomer(customer);
-		
+
 		return "redirect:/customer/list";
 	}
 
@@ -58,28 +66,28 @@ public class CustomerController {
 
 		// get the customer from the service layer
 		Customer customer = customerService.getCustomer(id);
-		
+
 		// set customer as a model attribute to pre populaete the form
 		model.addAttribute("customer", customer);
-		
+
 		// send over to our form
 		return "customer-form";
 	}
-	
+
 	@GetMapping("/delete")
 	public String deleteCustomer(@RequestParam("customerId") int id) {
 		// delete the customer
-		
-		customerService.deleteCustomer(id);		
+
+		customerService.deleteCustomer(id);
 		return "redirect:/customer/list";
 	}
-	
+
 	@GetMapping("/search")
 	public String searchCustomers(@RequestParam("theSearchName") String name, Model model) {
 		// search Customers for the service
-		List<Customer> customers = customerService.searchCustomers(name); 
+		List<Customer> customers = customerService.searchCustomers(name);
 		model.addAttribute("customers", customers);
-		
+
 		return "list-customers";
 	}
 }

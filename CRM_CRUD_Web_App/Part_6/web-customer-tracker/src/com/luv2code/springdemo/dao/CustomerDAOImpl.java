@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.luv2code.springdemo.entity.Customer;
+import com.luv2code.springdemo.util.SortUtils;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
@@ -70,14 +71,45 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// get the current hibernate session
 		Session session = sessionFactory.getCurrentSession();
 		Query query = null;
-		
+
 		if (name != null && name.trim().length() > 0) {
-			query = session.createQuery("from Customer where lower(firstName) like :name or lower(lastName) like :name", Customer.class);
+			query = session.createQuery("from Customer where lower(firstName) like :name or lower(lastName) like :name",
+					Customer.class);
 			query.setParameter("name", "%" + name.toLowerCase() + "%");
-		}
-		else {
+		} else {
 			query = session.createQuery("from Customer", Customer.class);
 		}
+
+		List<Customer> customers = query.getResultList();
+
+		return customers;
+	}
+
+	@Override
+	public List<Customer> getCustomers(int sortField) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		String fieldName = null;
+
+		switch (sortField) {
+		case SortUtils.FIRST_NAME:
+			fieldName = "firstName";
+			break;
+
+		case SortUtils.LAST_NAME:
+			fieldName = "lastName";
+			break;
+
+		case SortUtils.EMAIL:
+			fieldName = "email";
+			break;
+
+		default:
+			fieldName = "lastName";
+		}
+		
+		String queryString = "from Customer order by " + fieldName;
+		Query<Customer> query = session.createQuery(queryString, Customer.class);
 		
 		List<Customer> customers = query.getResultList();
 		
