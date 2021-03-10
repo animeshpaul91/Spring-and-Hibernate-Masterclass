@@ -39,8 +39,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 		// get the hibernate session
 		Session session = sessionFactory.getCurrentSession();
 
-		// save the customer
-		session.save(customer);
+		// save or update the customer depending if the id exists or not
+		session.saveOrUpdate(customer);
 	}
 
 	@Override

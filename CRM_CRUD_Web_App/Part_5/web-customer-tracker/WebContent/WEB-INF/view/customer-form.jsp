@@ -26,6 +26,12 @@
 			method="POST">
 			<!-- saveCustomer is a mapping  -->
 			<!-- modelAttribute will bind the data to the model attribute in Java src code i.e the customer object -->
+			<!-- When page is rendered, spring calls getter methods on each field -->
+			<!-- When submit button is clicked spring calls setter methods on each field -->
+			
+			<!-- Need to associate this data with customer id -->
+			<form:hidden path="id" />
+			
 			<table>
 				<tbody>
 					<tr>
