@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 public class MembershipDAO {
 	
 	@Before("execution(public void addAccount())")
-	public void addMember() {
+	public String addMember() {
 		System.out.println(getClass().getSimpleName() + ": Doing Stuff: Adding a membership account");
+		return null;
 	}
 }
