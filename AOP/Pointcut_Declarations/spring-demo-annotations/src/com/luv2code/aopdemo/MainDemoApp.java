@@ -23,12 +23,14 @@ public class MainDemoApp {
 		accountDAO.doWork();
 
 		// call the accountDAO getters and setters
-
+		
+		System.out.println("\nGetters and Setters Beginning...");
 		accountDAO.setName("FooBar");
 		accountDAO.setServiceCode("silver");
 
 		String name = accountDAO.getName();
 		String code = accountDAO.getServiceCode();
+		System.out.println("Getters and Setters Ending...");
 
 		// call the membership method
 		membershipDAO.addMember();
