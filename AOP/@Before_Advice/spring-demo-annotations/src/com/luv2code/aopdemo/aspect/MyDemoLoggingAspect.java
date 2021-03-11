@@ -19,10 +19,8 @@ public class MyDemoLoggingAspect {
 	// com.luv2code.aopdemo.dao.AccountDAO - declaring type
 	// addAccount() - method name (here no parameters)
 	
-	@Before("execution(public void addAccount())")
+	@Before("execution(public void add*())")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n=============>>> Executing @Before advice on addAccount()");
 	}
-	
-	
 }
