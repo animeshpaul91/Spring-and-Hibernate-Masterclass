@@ -23,4 +23,9 @@ public class MyDemoLoggingAspect {
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n=============>>> Executing @Before advice on addAccount()");
 	}
+	
+	@Before("execution(* com.luv2code.aopdemo.dao.*.*(..))") // match parameters by Account then followed by 0 or more parameters
+	public void anotherAdvice() {
+		System.out.println("\n=============>>> Executing @Before package match advice methods()");
+	}
 }
