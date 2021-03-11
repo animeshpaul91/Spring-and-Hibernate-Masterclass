@@ -11,7 +11,15 @@ public class MyDemoLoggingAspect {
 	
 	// let's start with a @Before Advice
 	
-	@Before("execution(public void addAccount())")
+	// General Syntax 
+	// execution(modifiers-pattern? return-type-pattern declaring-type-pattern? method-name-pattern(param-pattern) throws-pattern?)
+	// ? indicates optional
+	// public - modifier
+	// void - return type
+	// com.luv2code.aopdemo.dao.AccountDAO - declaring type
+	// addAccount() - method name (here no parameters)
+	
+	@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n=============>>> Executing @Before advice on addAccount()");
 	}
