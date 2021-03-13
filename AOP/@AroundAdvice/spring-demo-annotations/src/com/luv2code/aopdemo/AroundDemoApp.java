@@ -18,7 +18,9 @@ public class AroundDemoApp {
 		System.out.println("\nMain Program: Around Demo App");
 		System.out.println("Calling getFortune()");
 		
-		String fortune = trafficFortuneService.getFortune();
+		String fortune = trafficFortuneService.getFortune(); // this gets invoked through the Advice and not from the main
+		// Allows code to be executed before and after executing the target method. 
+		
 		System.out.println("\nMy Fortune is: " + fortune);
 		System.out.println("Finished");
 		
