@@ -3,7 +3,6 @@ package com.luv2code.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -74,7 +73,7 @@ public class MyDemoLoggingAspect {
 		// let's post-process the data. Let's modify it
 		// convert the account names to all uppercase
 		convertAccountNamesToUpperCase(result);
-
+		
 		System.out.println("\n=============>>>> Result is: " + result);
 	}
 
@@ -87,21 +86,13 @@ public class MyDemoLoggingAspect {
 			account.setName(upperName);
 		}
 	}
-
-	@After("execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))")
-	public void afterFinallyFindAccountsAdvice(JoinPoint joinPoint) {
-		// print out which method we are advising on
-		String method = joinPoint.getSignature().toShortString();
-		System.out.println("\n=============>>>> Executing @AfterFinally on method: " + method);
-	}
-
 	
-	@AfterThrowing(pointcut = "execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))", throwing = "exception")
+	@AfterThrowing(pointcut="execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))", throwing="exception")
 	public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exception) {
 		// print out which method we are advising on
 		String method = joinPoint.getSignature().toShortString();
 		System.out.println("\n=============>>>> Executing @AfterThrowing on method: " + method);
-
+		
 		// logging the exception
 		System.out.println("\n=============>>>> The Thrown Exception is: " + exception);
 	}
