@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class TrafficFortuneService {
 	public String getFortune() {
-		System.out.println("...test...");
-		
 		// simulate a delay
 		try {
 			TimeUnit.SECONDS.sleep(5);
