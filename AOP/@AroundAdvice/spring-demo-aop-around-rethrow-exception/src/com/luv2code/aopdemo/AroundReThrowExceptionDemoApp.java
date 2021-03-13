@@ -6,9 +6,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.luv2code.aopdemo.service.TrafficFortuneService;
 
-public class AroundHandleExceptionDemoApp {
+public class AroundReThrowExceptionDemoApp {
 
-	private static Logger logger = Logger.getLogger(AroundHandleExceptionDemoApp.class.getName());
+	private static Logger logger = Logger.getLogger(AroundReThrowExceptionDemoApp.class.getName());
 
 	public static void main(String[] args) {
 
@@ -23,7 +23,14 @@ public class AroundHandleExceptionDemoApp {
 		logger.info("Calling getFortune()");
 
 		boolean tripWire = true;
-		String fortune = trafficFortuneService.getFortune(tripWire); // this gets invoked through the Advice and not from the
+		String fortune = null;
+		
+		try {
+			fortune = trafficFortuneService.getFortune(tripWire);
+		} catch (RuntimeException e) {
+			// TODO Auto-generated catch block
+			logger.warning(e.getMessage());
+		}
 		// main has no track of thrown exception
 		
 		// Allows code to be executed before and after executing the target method.
