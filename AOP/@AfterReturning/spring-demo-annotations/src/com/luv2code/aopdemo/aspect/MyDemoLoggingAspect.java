@@ -1,6 +1,9 @@
 package com.luv2code.aopdemo.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -50,5 +53,13 @@ public class MyDemoLoggingAspect {
 				System.out.println("Account Name: " + account.getLevel());
 			}
 		}
+	}
+	
+	// add a new advice for @AfterReturning on the findAccounts method
+	
+	@AfterReturning(pointcut="* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..)", returning="result")
+	public void afterReturningFindAccountsAdvice(JoinPoint joinPoint, List<Account> result) {
+		// second argument has to match the keyword mentioned against returning in line # 60
+		
 	}
 }
