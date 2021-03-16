@@ -16,8 +16,8 @@ public class DemoAppConfig {
 	@Bean
 	public ViewResolver viewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-		viewResolver.setPrefix("/WEB_INF/view/");
-		viewResolver.setPrefix(".jsp");
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
 		return viewResolver;
 	}
 }
