@@ -29,8 +29,8 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
-		.loginPage("/showMyLoginPage")
-		.loginProcessingUrl("/authenticateUser")
+		.loginPage("/showMyLoginPage") // controller required for this
+		.loginProcessingUrl("/authenticateUser") // controller not required because spring security filter will handle this
 		.permitAll();
 	}
 }
