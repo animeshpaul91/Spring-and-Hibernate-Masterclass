@@ -8,6 +8,7 @@
 		<hr>
 		
 		Welcome to Luv2code Company Page
+		<hr>
 	</body>
 	
 </html>
