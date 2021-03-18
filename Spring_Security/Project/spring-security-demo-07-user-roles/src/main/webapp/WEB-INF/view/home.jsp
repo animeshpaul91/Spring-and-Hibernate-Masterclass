@@ -22,7 +22,6 @@
 		<security:authentication property="principal.authorities" />
 	</p>
 
-	<hr>
 
 	<security:authorize access="hasRole('MANAGER')">
 		<!-- Add a link to point to leaders -->
