@@ -28,6 +28,12 @@
 			(Only for Managers)
 		</p>
 		
+		<!-- Add a link to point to systems (only for admins -->
+		<p>
+			<a href="${pageContext.request.contextPath}/systems"> IT Systems Meeting </a>
+			(Only for System Administrators)
+		</p>
+		
 		<hr>
 		<!-- Add a logout button -->
 		<form:form action="${pageContext.request.contextPath}/logout" method="POST">
