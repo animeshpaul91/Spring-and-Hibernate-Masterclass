@@ -27,7 +27,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		// configure the security of web paths in application login, logout
 		http.authorizeRequests()
 		.antMatchers("/css/**").permitAll()
-		.anyRequest().authenticated()
+		.antMatchers("/").hasRole("EMPLOYEE")
+		.antMatchers("/leaders/**").hasRole("MANAGER")
+		.antMatchers("/systems/**").hasRole("ADMIN")
 		.and()
 		.formLogin()
 		.loginPage("/showMyLoginPage") // controller required for this
