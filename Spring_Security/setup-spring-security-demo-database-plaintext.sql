@@ -53,4 +53,8 @@ VALUES
 
 INSERT INTO `users` 
 VALUES 
-('john','{noop}Babubabu123',1);
+('animesh','{noop}Babubabu123',1);
+
+INSERT INTO `authorities` 
+VALUES 
+('animesh','ROLE_EMPLOYEE');
