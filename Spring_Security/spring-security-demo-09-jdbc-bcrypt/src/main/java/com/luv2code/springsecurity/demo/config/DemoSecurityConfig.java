@@ -29,8 +29,9 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		// configure the security of web paths in application login, logout
 		http.authorizeRequests()
+		.antMatchers("/").permitAll()
 		.antMatchers("/css/**").permitAll()
-		.antMatchers("/").hasRole("EMPLOYEE")
+		.antMatchers("/employees").hasRole("EMPLOYEE")
 		.antMatchers("/leaders/**").hasRole("MANAGER")
 		.antMatchers("/systems/**").hasRole("ADMIN")
 		.and()
@@ -40,6 +41,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.and()
 		.logout()
+		.logoutSuccessUrl("/")
 		.permitAll() // spring will redirect to /logout. No need to add controller
 		.and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
