@@ -41,7 +41,7 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.and()
 		.logout()
-		.logoutSuccessUrl("/")
+		.logoutSuccessUrl("/showMyLoginPage")
 		.permitAll() // spring will redirect to /logout. No need to add controller
 		.and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
