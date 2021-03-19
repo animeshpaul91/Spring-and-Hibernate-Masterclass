@@ -13,79 +13,90 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
-@EnableWebMvc // provides same functionality as <mvc:annotation-driven>
+@EnableWebMvc
 @ComponentScan(basePackages = "com.luv2code.springsecurity.demo")
-@PropertySource("classpath:persistence-mysql.properties") // Will read the properties file
-// src/main/resources files are automatically copied to classpath during Maven Build
-public class DemoAppConfig implements WebMvcConfigurer {
+@PropertySource("classpath:persistence-mysql.properties")
+public class DemoAppConfig {
 
-	// setup a variable to hold the properties
+	// set up variable to hold the properties
+
 	@Autowired
-	private Environment env; // and configured via @PropertySource. Will hold the properties 
+	private Environment env;
 
 	// set up a logger for diagnostics
+
 	private Logger logger = Logger.getLogger(getClass().getName());
 
 	// define a bean for ViewResolver
+
 	@Bean
 	public ViewResolver viewResolver() {
+
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+
 		viewResolver.setPrefix("/WEB-INF/view/");
 		viewResolver.setSuffix(".jsp");
+
 		return viewResolver;
 	}
 
-	@Override
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		// TODO Auto-generated method stub
-		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-	}
-
 	// define a bean for our security datasource
+
 	@Bean
 	public DataSource securityDataSource() {
-		// create a connection pool
+
+		// create connection pool
 		ComboPooledDataSource securityDataSource = new ComboPooledDataSource();
-		
+
 		// set the jdbc driver class
+
 		try {
 			securityDataSource.setDriverClass(env.getProperty("jdbc.driver"));
-		} catch (PropertyVetoException e) {
-			// TODO Auto-generated catch block
-			throw new RuntimeException(e);
+		} catch (PropertyVetoException exc) {
+			throw new RuntimeException(exc);
 		}
-		
-		// log the conenction props
-		logger.info(">>>>> jdbc.url = " + env.getProperty("jdbc.url"));
-		logger.info(">>>>> jdbc.user = " + env.getProperty("jdbc.user"));
+
+		// log the connection props
+		// for sanity's sake, log this info
+		// just to make sure we are REALLY reading data from properties file
+
+		logger.info(">>> jdbc.url=" + env.getProperty("jdbc.url"));
+		logger.info(">>> jdbc.user=" + env.getProperty("jdbc.user"));
 
 		// set database connection props
+
 		securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
 		securityDataSource.setUser(env.getProperty("jdbc.user"));
 		securityDataSource.setPassword(env.getProperty("jdbc.password"));
-		
+
 		// set connection pool props
-		securityDataSource.setInitialPoolSize(getIntProperty(env.getProperty("connection.pool.initialPoolSize")));
-		securityDataSource.setMinPoolSize(getIntProperty(env.getProperty("connection.pool.minPoolSize")));
-		securityDataSource.setMaxPoolSize(getIntProperty(env.getProperty("connection.pool.maxPoolSize")));
-		securityDataSource.setMaxIdleTime(getIntProperty(env.getProperty("connection.pool.maxIdleTime")));
+
+		securityDataSource.setInitialPoolSize(getIntProperty("connection.pool.initialPoolSize"));
+
+		securityDataSource.setMinPoolSize(getIntProperty("connection.pool.minPoolSize"));
+
+		securityDataSource.setMaxPoolSize(getIntProperty("connection.pool.maxPoolSize"));
+
+		securityDataSource.setMaxIdleTime(getIntProperty("connection.pool.maxIdleTime"));
 
 		return securityDataSource;
 	}
-	
+
 	// need a helper method
 	// read environment property and convert to int
-	
+
 	private int getIntProperty(String propName) {
-		String propVal = env.getProperty(propName);		
+
+		String propVal = env.getProperty(propName);
+
+		// now convert to int
 		int intPropVal = Integer.parseInt(propVal);
+
 		return intPropVal;
 	}
 }
