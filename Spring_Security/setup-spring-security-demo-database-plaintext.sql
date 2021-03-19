@@ -51,3 +51,6 @@ VALUES
 ('susan','ROLE_ADMIN');
 
 
+INSERT INTO `users` 
+VALUES 
+('john','{noop}Babubabu123',1);
