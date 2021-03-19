@@ -51,3 +51,6 @@ select courses0_.student_id as student_1_1_0_, courses0_.course_id as course_i2_
 where courses0_.student_id=1;
 
 select * from customer;
+
+select * from users;
+select * from authorities;
