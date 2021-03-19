@@ -49,12 +49,14 @@
 		</dependency>
 
 		<!-- Add MySQL and C3P0 support -->
+		<!-- This is JDBC driver -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.45</version>
 		</dependency>
 		
+		<!-- This is Connection Pool -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
