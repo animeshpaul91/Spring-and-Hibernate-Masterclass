@@ -65,10 +65,27 @@ public class DemoAppConfig implements WebMvcConfigurer {
 		// log the conenction props
 		logger.info(">>>>> jdbc.url = " + env.getProperty("jdbc.url"));
 		logger.info(">>>>> jdbc.user = " + env.getProperty("jdbc.user"));
-		// set database connection props
 
+		// set database connection props
+		securityDataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+		securityDataSource.setUser(env.getProperty("jdbc.user"));
+		securityDataSource.setPassword(env.getProperty("jdbc.password"));
+		
 		// set connection pool props
+		securityDataSource.setInitialPoolSize(getIntProperty(env.getProperty("connection.pool.initialPoolSize")));
+		securityDataSource.setMinPoolSize(getIntProperty(env.getProperty("connection.pool.minPoolSize")));
+		securityDataSource.setMaxPoolSize(getIntProperty(env.getProperty("connection.pool.maxPoolSize")));
+		securityDataSource.setMaxIdleTime(getIntProperty(env.getProperty("connection.pool.maxIdleTime")));
 
 		return securityDataSource;
+	}
+	
+	// need a helper method
+	// read environment property and convert to int
+	
+	private int getIntProperty(String propName) {
+		String propVal = env.getProperty(propName);		
+		int intPropVal = Integer.parseInt(propVal);
+		return intPropVal;
 	}
 }
