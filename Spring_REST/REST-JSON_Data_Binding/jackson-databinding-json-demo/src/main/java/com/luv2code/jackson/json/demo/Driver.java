@@ -14,7 +14,7 @@ public class Driver {
 			ObjectMapper mapper = new ObjectMapper();
 			
 			// read JSON file and map/convert to Java POJO
-			Student student = mapper.readValue(new File("data/sample-lite.json"), Student.class);
+			Student student = mapper.readValue(new File("data/sample-full.json"), Student.class); // invokes setters on the Class
 			
 			// print first name and last name
 			System.out.println("First Name: " + student.getFirstName());
