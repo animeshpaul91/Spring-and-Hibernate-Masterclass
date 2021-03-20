@@ -1,5 +1,8 @@
 package com.luv2code.jackson.json.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true) // Will ignore unknown properties. App will not crash
 public class Student {
 	private int id;
 	private String firstName;
