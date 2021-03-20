@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,4 +51,18 @@ public class StudentRestController {
 
 		return students.get(studentId);
 	}
+	
+	// Add an exception handler
+	@ExceptionHandler
+	public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException studentNotFoundException) {
+		
+		// create a student Error response
+		StudentErrorResponse error = new StudentErrorResponse();
+		error.setStatus(HttpStatus.NOT_FOUND.value());
+		error.setMessage(studentNotFoundException.getMessage());
+		error.setTimeStamp(System.currentTimeMillis());
+		
+		return new ResponseEntity<StudentErrorResponse>(error, HttpStatus.NOT_FOUND); // jackson will convert this POJO to plain JSON
+	}
+	
 }
