@@ -20,6 +20,6 @@ public class StudentRestController {
 		students.add(new Student("Poornima", "Patel"));
 		students.add(new Student("Mario", "Rossi"));
 		students.add(new Student("Mary", "Smith"));
-		return students;
+		return students; // spring leverages jackson to convert list to JSON implicitly
 	}
 }
