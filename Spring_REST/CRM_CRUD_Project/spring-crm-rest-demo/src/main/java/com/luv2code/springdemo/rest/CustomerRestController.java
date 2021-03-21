@@ -38,7 +38,7 @@ public class CustomerRestController {
 	}
 	
 	// add mapping for POST /customers - add new customer
-	@PostMapping("/customer")
+	@PostMapping("/customers")
 	public Customer addCustomer(@RequestBody Customer customer) { // @RequestBody converts incoming JSON to POJO
 		// also just in case the user passes an id, we will set it to 0
 		// this will force save of a new item instead of update bcz hibernate treats 0 as empty ID
