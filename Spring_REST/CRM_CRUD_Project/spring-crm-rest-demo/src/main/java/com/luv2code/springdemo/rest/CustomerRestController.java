@@ -26,8 +26,11 @@ public class CustomerRestController {
 	}
 	
 	@GetMapping("/customers/{customerId}")
-	public Customer getCustomer(@PathVariable int customerId) {
+	public Customer getCustomer(@PathVariable int customerId) throws Throwable {
 		Customer customer = customerService.getCustomer(customerId);
+		
+		if (customer == null) throw new CustomerNotFoundException("Customer Id: " + customerId + " not found");
+		
 		return customer; // jackson converts POJO to JSON
 	}
 }
