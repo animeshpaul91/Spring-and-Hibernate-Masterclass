@@ -59,7 +59,7 @@
 			<version>${mysql.connector.version}</version>
 		</dependency>
 
-		<!-- C3PO -->
+		<!-- C3PO Connection Pooling framework -->
 		<dependency>
 			<groupId>com.mchange</groupId>
 			<artifactId>c3p0</artifactId>
@@ -77,12 +77,6 @@
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
 			<version>2.3.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
 		</dependency>
 
 
