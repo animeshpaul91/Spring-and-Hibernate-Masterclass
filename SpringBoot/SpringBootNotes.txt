@@ -3,4 +3,11 @@
 3. This also helps to run the application on the command line -> java - jar <jar file>
 4. Packaging can also be in classical WAR format where in you can deploy your WAR file in an application server on your PC or your corporate network. 
 
-** SpringBoot Applications already have an application server embedded in them ** 
+** SpringBoot Applications already have an application server embedded in them **
+
+Directory Structure: 
+mvnw - 
+1. Allows you to run a Maven Project
+1. No need to have Maven installed
+3. If correct version of Maven is NOT found, automatically downloads correct version. 
+4. mvnw.sh for Linux/Mac and mvnw.cmd for MS Windows - Runs `mvn clean compile test `
