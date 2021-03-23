@@ -23,3 +23,19 @@ public class MycoolappApplication {
 @ComponentScan - Enables Component Scanning of current package. Also Recursively scans sub packages
 @Configuration - Able to register extra beans with @Bean or import other configuration classes
 */
+
+/*
+ * If there are other packages that need Component Scanning, then
+ * @SpringBootApplication(
+ * scanBasePackages= { "com.luv2code.springboot.demo.mycoolapp",
+ * 						"org.acme.iot.utils", 
+ * 						"edu.cmu.wead"})
+ */
+
+/*
+	By default, SpringBoot will load prperties from application.properties
+*/
+
+/* 
+	Do not use src/main/webapp directory if your application is packaged as a JAR. This Only works for WAR.
+*/
