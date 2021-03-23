@@ -1,0 +1,4 @@
+1. Spring Boot helps package your entire application into a JAR file. 
+2. This JAR file contains the Application code as well as an embedded application server container (Tomcat, Jetty etc). 
+3. This also helps to run the application on the command line -> java - jar <jar file>
+4. Packaging can also be in classical WAR format where in you can deploy your WAR file in an application server on your PC or your corporate network.  
