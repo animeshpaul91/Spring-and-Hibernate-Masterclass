@@ -54,3 +54,5 @@ select * from customer;
 
 select * from users;
 select * from authorities;
+
+select * from employee;
