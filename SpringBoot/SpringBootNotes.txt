@@ -11,3 +11,10 @@ mvnw -
 1. No need to have Maven installed
 3. If correct version of Maven is NOT found, automatically downloads correct version. 
 4. mvnw.sh for Linux/Mac and mvnw.cmd for MS Windows - Runs `mvn clean compile test `
+
+Java Persistence API (JPA)
+
+In SpringBoot, Hibernate is the default implementation of JPA. 
+Entity Manager is similar to Hibernate Session Factory.
+Entity Manager can serve as a wrapper for a Hibernate Session Object. 
+We can inject Entity Manager into our DAO as the Entity Manager Bean is created by SpringBoot.  
