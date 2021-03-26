@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<!-- Special Starter that defines maven default configuration (versions) -->
+		<!-- Dependency Management Use version on parent only spring-boot-starter dependencies inherit version from parent -->
+		<!-- Also specifies default configuration of Spring Boot Plugin -->
+		
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.4</version> <!-- This is SpringBoot Version -->
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<groupId>com.luv2code.springboot.demo</groupId>
+	<artifactId>mycoolapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>mycoolapp</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<!-- Override any version from starter parent -->
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<!-- Spring Boot version is inherited from starter parent across all dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- spring-boot-starter-web is a collection of Maven dependencies (Compatible 
+				Versions) -->
+			<!-- spring web, spring web mvc, hibernate-validator, tomcat, json -->
+			<!-- greatly saves developer's time -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Add support for automatic reloading -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- To package executable JAR or WAR archive -->
+				<!-- Can also easily run the app using mvn package and then mvn spring-boot:run -->
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
