@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +35,7 @@ public class EmployeeRestController {
 	@GetMapping("/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId) {
 		Employee employee = employeeService.findById(employeeId);
-
+		
 		if (employee == null)
 			throw new RuntimeException("Employee Id not found - " + employeeId);
 
@@ -45,6 +46,13 @@ public class EmployeeRestController {
 	public Employee addEmployee(@RequestBody Employee employee) {
 		// also just in case they pass an ID in the data payload
 		employee.setId(0); // force insert to DB
+		employeeService.save(employee);
+		return employee;
+	}
+	
+	// add mapping for PUT /employees - update existing employee
+	@PutMapping("/employees")
+	public Employee updateEmployee(@RequestBody Employee employee) {
 		employeeService.save(employee);
 		return employee;
 	}
