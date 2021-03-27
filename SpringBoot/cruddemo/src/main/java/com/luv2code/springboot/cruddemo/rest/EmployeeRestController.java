@@ -3,6 +3,7 @@ package com.luv2code.springboot.cruddemo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +33,10 @@ public class EmployeeRestController {
 	}
 
 	// add mapping for GET /employee/{employeeId}
-	@GetMapping("/employees/{employeeId}")
+	@GetMapping("/employee/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId) {
 		Employee employee = employeeService.findById(employeeId);
-		
+
 		if (employee == null)
 			throw new RuntimeException("Employee Id not found - " + employeeId);
 
@@ -49,12 +50,26 @@ public class EmployeeRestController {
 		employeeService.save(employee);
 		return employee;
 	}
-	
+
 	// add mapping for PUT /employees - update existing employee
-	@PutMapping("/employees")
-	public Employee updateEmployee(@RequestBody Employee employee) {
+	@PutMapping("/employee/{employeeId}")
+	public Employee updateEmployee(@PathVariable int employeeId, @RequestBody Employee employee) {
+		employee.setId(employeeId);
 		employeeService.save(employee);
 		return employee;
+	}
+	
+	// add mapping for DELETE /employee/{employeeId} - delete employee
+	@DeleteMapping("/employee/{employeeId}") 
+	public String deleteEmployee(@PathVariable int employeeId) {
+		Employee employee = employeeService.findById(employeeId);
+		
+		if (employee == null)
+			throw new RuntimeException("Employee Id not found - " + employeeId);
+		
+		employeeService.deleteById(employeeId);
+		
+		return "Deleted employee Id - " + employeeId;
 	}
 
 }
