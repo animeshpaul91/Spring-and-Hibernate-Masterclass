@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.luv2code.springboot.thymeleafdemo.entity.Employee;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> { // <Entity, PrimaryKey>
 	 // no need to write any code
 }
