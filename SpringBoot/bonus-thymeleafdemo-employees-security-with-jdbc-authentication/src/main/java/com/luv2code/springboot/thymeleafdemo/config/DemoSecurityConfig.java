@@ -15,44 +15,28 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	// add a reference to our security data source
-	
+
 	@Autowired
-	@Qualifier("securityDataSource")
+	@Qualifier("securityDataSource") // bean created in DemoDataSourceConfig.java
 	private DataSource securityDataSource;
-		
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		// use jdbc authentication ... oh yeah!!!		
+		// use jdbc authentication ... oh yeah!!!
 		auth.jdbcAuthentication().dataSource(securityDataSource);
-		
+		/* This injects the "securityDataSource" bean that was defined in the previous file: DemoDataSourceConfig.java. Then in the configure() method, 
+		we tell Spring Security to use this data source for JDBC authentication. */
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-			.antMatchers("/employees/showForm*").hasAnyRole("MANAGER", "ADMIN")
-			.antMatchers("/employees/save*").hasAnyRole("MANAGER", "ADMIN")
-			.antMatchers("/employees/delete").hasRole("ADMIN")
-			.antMatchers("/employees/**").hasRole("EMPLOYEE")
-			.antMatchers("/resources/**").permitAll()
-			.and()
-			.formLogin()
-				.loginPage("/showMyLoginPage")
-				.loginProcessingUrl("/authenticateTheUser")
-				.permitAll()
-			.and()
-			.logout().permitAll()
-			.and()
-			.exceptionHandling().accessDeniedPage("/access-denied");
-		
+		http.authorizeRequests().antMatchers("/employees/showForm*").hasAnyRole("MANAGER", "ADMIN")
+				.antMatchers("/employees/save*").hasAnyRole("MANAGER", "ADMIN").antMatchers("/employees/delete")
+				.hasRole("ADMIN").antMatchers("/employees/**").hasRole("EMPLOYEE").antMatchers("/resources/**")
+				.permitAll().and().formLogin().loginPage("/showMyLoginPage").loginProcessingUrl("/authenticateTheUser")
+				.permitAll().and().logout().permitAll().and().exceptionHandling().accessDeniedPage("/access-denied");
 	}
-		
+
 }
-
-
-
-
-
-
