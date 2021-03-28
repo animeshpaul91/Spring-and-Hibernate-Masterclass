@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
+
+<title>Employee Directory</title>
+<!-- Referencing CSS file in Thymeleaf template -->
+<link rel="stylesheet" th:href="@{/css/demo.css}" />
+<!-- @ marks path to the context root of the web application -->
+</head>
+
+<body>
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<hr>
+
+		<!-- Add a button -->
+		<a th:href="@{/employees/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="employee: ${employees}">
+					<td th:text="${employee.firstName}" />
+					<td th:text="${employee.lastName}" />
+					<td th:text="${employee.email}" />
+
+					<!-- Add update button/link -->
+					<td><a
+						th:href="@{/employees/showFormForUpdate(employeeId=${employee.id})}"
+						class="btn btn-info btn-sm"> Update <!-- Appends ID to URL &employeeId=xxx -->
+					</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
