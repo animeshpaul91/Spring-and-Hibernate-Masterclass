@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/bootstrap.min.js"></script>
+
+<title>Save Employee</title>
+<!-- Referencing CSS file in Thymeleaf template -->
+<link rel="stylesheet" th:href="@{/css/demo.css}" />
+<!-- @ marks path to the context root of the web application -->
+</head>
+
+<body>
+
+	<div class="container">
+		<h3>Employee Directory</h3>
+		<hr>
+
+		<p class="h4 mb-4">Save Employee</p>
+		<form action="#" th:action="@{/employees/save}"
+			th:object="${employee}" method="POST">
+			<!-- @{} refers to application context path -->
+			<!-- th:object refers to the object in the model attribute -->
+			<!-- method="POST" refers to the fact that form data will be submitted -->
+			
+			<!-- Add hidden form field to handle the update -->
+			<input type="hidden" th:field="*{id}" />
+			<!-- binds to the model attribute. Tells the app which employee to update -->
+			
+			<input type="text" th:field="*{firstName}"
+				class="form-control mb-4 col-4" placeholder="First Name">
+			<!-- *{firstName} selects the property on the referenced object using getters or setters -->
+			
+			<input type="text" th:field="*{lastName}"
+				class="form-control mb-4 col-4" placeholder="Last Name"> 
+				
+			<input type="text" th:field="*{email}" class="form-control mb-4 col-4"
+				placeholder="Email">
+				
+			<button type="submit" class="btn btn-info col-2"> Save </button>
+		</form>
+		
+		<hr>
+		
+		<a th:href="@{/employees/list}"> Back to Employees List </a>
+		<!-- When form is loaded the getters are called. When form is submitted setters are called on the fields -->
+
+	</div>
+
+</body>
+
+
+</html>
