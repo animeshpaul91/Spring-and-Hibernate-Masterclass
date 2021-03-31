@@ -6,3 +6,5 @@ sportsTwo.push("FootBall");
 for(let sport of sportsTwo) {
     console.log(sport);
 }
+
+// tsc --noEmitOnError <file.ts>
