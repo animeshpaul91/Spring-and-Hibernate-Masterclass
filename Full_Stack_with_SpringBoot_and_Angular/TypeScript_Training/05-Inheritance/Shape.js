@@ -28,7 +28,7 @@ var Shape = /** @class */ (function () {
         configurable: true
     });
     Shape.prototype.getInfo = function () {
-        return "x = " + this._x + ", y=" + this._y;
+        return "x = " + this._x + ", y = " + this._y;
     };
     return Shape;
 }());
