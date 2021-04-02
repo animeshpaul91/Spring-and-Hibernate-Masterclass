@@ -5,15 +5,21 @@
             <th>Last Name</th>
             <th>Email</th>
             <th>Sales Volume</th>
+            <th>Met Quota</th>
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let salesperson of salesPersonList">
+        <tr *ngFor="let salesperson of salesPersonList" [ngClass]="{'highlight': salesperson.salesVolume >= 60000}">
+            <!--ngfor is a structural directive -->
             <td> {{salesperson.firstName}} </td>
             <td> {{salesperson.lastName}} </td>
             <td> {{salesperson.email}} </td>
-            <td> {{salesperson.salesVolume}} </td>
+            <td> {{salesperson.salesVolume | currency: 'USD' }} </td>
+            <td> 
+                <div *ngIf="salesperson.salesVolume >= 60000; else myElseBlock"> Yes </div>
+                <ng-template #myElseBlock> No </ng-template>
+            </td>
         </tr>
     </tbody>
 
