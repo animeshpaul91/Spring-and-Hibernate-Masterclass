@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-@NgModule({
+// app.module is a collection of Components 
+@NgModule({ // this is also like an Annotation
   declarations: [
     AppComponent
   ],

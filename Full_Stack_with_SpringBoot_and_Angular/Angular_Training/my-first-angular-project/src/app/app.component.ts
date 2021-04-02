@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-first-angular-project'; // title is referred to in app.component.html in double curly braces
+  title = 'my-first-app'; // title is referred to in app.component.html in double curly braces
+  firstName = 'Animesh'
+  lastName = 'Paul'
 }
