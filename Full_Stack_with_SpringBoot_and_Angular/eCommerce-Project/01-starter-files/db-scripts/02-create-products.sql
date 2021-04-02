@@ -76,3 +76,5 @@ VALUES ('BOOK-TECH-1004', 'The Go Programming Language: A to Z', 'Learn Go',
 ,1,100,24.99,1, NOW());
 
 select * from product;
+
+select * from product_category;
