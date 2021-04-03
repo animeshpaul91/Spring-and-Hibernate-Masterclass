@@ -22,6 +22,6 @@ export class ProductService {
 
 interface GetResponse { // will help unwrap JSON data from REST API and make use of the _embedded entry that comes back from the API
   _embedded: {
-    products: Product[];
+    products: Product[]; // data gets binded to the Products Array defined in this project
   }
 }
