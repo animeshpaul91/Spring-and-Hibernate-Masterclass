@@ -1,0 +1,21 @@
+Component: 
+
+1. Main Player in an Angular Application. Has 2 parts
+	1.1 View for user interface
+	1.2 Class that contains application logic / event handling for view
+
+2. View Template
+	2.1 The static user interface for the component. 
+	2.2 static HTML with dynamic elements
+
+3. Directive
+	Adds custom behavior to HTML elements. (ngFor, ngIf)
+	Used for Looping, Conditionals
+
+4. Service 
+	Helper class that provides desired functionality. 
+	Retrieving data from a server, performing a calculation, validation etc. 
+	Code written in Typescript as a part of the Angular Project. 
+
+5. Module
+	A Collection of related components, directives, services etc. 
