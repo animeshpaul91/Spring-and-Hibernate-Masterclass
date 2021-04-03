@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProductService } from './services/product.service';
 
 @NgModule({
-  declarations: [
+  declarations: [ // list of all components in this application
     AppComponent,
     ProductListComponent
   ],
