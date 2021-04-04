@@ -10,7 +10,7 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 
 
 const routes: Routes = [
-    {path: 'category/:id', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
+    {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
     {path: 'category', component: ProductListComponent},
     {path: 'products', component: ProductListComponent},
     {path: '', redirectTo: '/products', pathMatch: 'full'},
