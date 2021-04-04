@@ -22,12 +22,16 @@ export class ProductListComponent implements OnInit {
     this.route.paramMap.subscribe(() => {
       // paramMap is an observable that contains a map of the required and optional parameters specific to each route. 
       // the map supports retrieving single and multiple values from the same parameter.
+      // parammap.subscrbe is done to re render the component whenever there is a change in URL, even if from /category/1 to category/2
+      // currently as per Router config, /category/1 or category/2 is generic as /category/:id so, both will return the same ProductList instance
+      // alert("I am in ngOnInit");
       this.listProducts(); // this will help call listProducts() everytime there is a change in the routing URL.
     });
 
   }
 
   listProducts() {
+    // alert("I am in listProducts()");
     // check if "id" paramter is available 
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id'); // the :id configigured in app.module.ts is the key
     // route is activated route
