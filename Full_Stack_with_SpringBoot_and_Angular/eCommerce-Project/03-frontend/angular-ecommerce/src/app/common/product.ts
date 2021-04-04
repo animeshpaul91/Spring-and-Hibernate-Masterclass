@@ -1,5 +1,6 @@
 export class Product {
     // the property names should exactly match as is in the API returned data
+    id: number;
     sku: string;
     name: string;
     description: string;
