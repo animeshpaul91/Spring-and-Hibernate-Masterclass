@@ -13,7 +13,9 @@ export class ProductService {
   private baseUrl: string = "http://localhost:8080/api/products";
   constructor(private httpClient: HttpClient) { }
 
-  getProductList(): Observable<Product[]> { // this method maps type JSON data from the SpringBoot REST service to a product array
+  getProductList(categoryId: number): Observable<Product[]> { // this method maps type JSON data from the SpringBoot REST service to a product array
+    // TODO need to build a URL based on category ID
+        
     return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
       map(response => response._embedded.products)
     );
