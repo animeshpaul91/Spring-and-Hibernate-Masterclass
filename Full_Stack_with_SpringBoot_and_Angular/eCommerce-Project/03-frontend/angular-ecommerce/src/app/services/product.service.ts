@@ -27,9 +27,8 @@ export class ProductService {
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
-      map(response => response._embedded.productCategories)
+      map(response => response._embedded.productCategory)
     );
 
   }
@@ -44,6 +43,6 @@ interface GetResponseProducts { // will help unwrap JSON data from REST API and 
 
 interface GetResponseProductCategory { // will help unwrap JSON data from REST API and make use of the _embedded entry that comes back from the API
   _embedded: {
-    productCategories: ProductCategory[]; // data gets binded to the Products Array defined in this project
+    productCategory: ProductCategory[]; // data gets binded to the Products Array defined in this project
   }
 }

@@ -1,1 +1,12 @@
-<p>product-category-menu works!</p>
+<div class="menu-sidebar-content js-scrollbar1">
+    <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+            <li *ngFor="let productCategory of productCategories">
+                <a routerLink="/category/{{ productCategory.id }}" routerLinkActive="active-link">
+                    {{ productCategory.categoryName }}
+                </a>
+                <!-- active-link is a custom css style that highlights the current route -->
+            </li>
+        </ul>
+    </nav>
+</div>
