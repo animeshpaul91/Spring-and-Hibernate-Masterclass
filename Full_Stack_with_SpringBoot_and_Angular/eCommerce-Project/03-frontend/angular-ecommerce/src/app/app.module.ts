@@ -5,6 +5,18 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProductService } from './services/product.service';
+import { Routes, RouterModule } from '@angular/router';
+
+
+const routes: Routes = [
+    {path: 'category/:id', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
+    {path: 'category', component: ProductListComponent},
+    {path: 'products', component: ProductListComponent},
+    {path: '', redirectTo: '/products', pathMatch: 'full'},
+    {path: '**', redirectTo: '/products', pathMatch: 'full'} // generic wildcard
+
+    // The order of the routes is important. The order has to be starting from the most specific to generic. 
+]
 
 @NgModule({
   declarations: [ // list of all components in this application
@@ -12,6 +24,7 @@ import { ProductService } from './services/product.service';
     ProductListComponent
   ],
   imports: [
+    RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application
     BrowserModule, 
     HttpClientModule // add Httpclient module for making API requests. This module becomes available to the application
   ],

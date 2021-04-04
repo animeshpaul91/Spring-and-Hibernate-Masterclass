@@ -19,3 +19,14 @@ Component:
 
 5. Module
 	A Collection of related components, directives, services etc. 
+
+
+	Angular Routing: 
+
+	1. Router - Main routing Service. Enables navigation between views based on user actions
+	2. Route - Maps a URL path to a component. 
+	3. RouterOutlet - Acts as a placeholder. Renders the desired component based on route. 
+	4. Routerlink - Link to specific routes in your application. 
+	5. ActivatedRoute - The current active route that loaded the component. Useful for accessing route parameters. 
+
+	When the user clicks on the link in the RouterLink, the new instance of the component gets created and replaed in RouterOutlet. Only updates a section of the page.
