@@ -11,7 +11,7 @@ import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
-    {path: 'search/:keyword', component: ProductListComponent},
+    {path: 'search/:keyword', component: ProductListComponent}, // route will be handled by Product List Component
     {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
     {path: 'category', component: ProductListComponent},
     {path: 'products', component: ProductListComponent},
