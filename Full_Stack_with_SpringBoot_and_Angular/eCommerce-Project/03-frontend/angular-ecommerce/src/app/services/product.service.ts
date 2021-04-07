@@ -20,14 +20,18 @@ export class ProductService {
   getProductList(categoryId: number): Observable<Product[]> { // this method maps type JSON data from the SpringBoot REST service to a product array
     // need to build the URL based on category ID
     const searchURL: string = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}`;
-
-    return this.httpClient.get<GetResponseProducts>(searchURL).pipe(
-      map(response => response._embedded.products)
-    );
+    return this.getProducts(searchURL);
   }
 
   searchProducts(theKeyword: string): Observable<Product[]> {
-    throw new Error('Method not implemented.');
+    const searchURL: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
+    return this.getProducts(searchURL);
+  }
+
+  private getProducts(searchURL: string): Observable<Product[]> {
+    return this.httpClient.get<GetResponseProducts>(searchURL).pipe(
+      map(response => response._embedded.products)
+    );
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
