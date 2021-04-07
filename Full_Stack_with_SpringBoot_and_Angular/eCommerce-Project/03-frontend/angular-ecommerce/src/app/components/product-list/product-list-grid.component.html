@@ -14,6 +14,13 @@
                         <a href="#" class="primary-btn">Add to cart</a>
                     </div>
                 </div>
+
+                <!--If the products are empty then display a message to the user-->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No Products Found!
+                </div>
+                <!-- ? Guards against null and undefined values in property paths. It is called safe navigation operator-->
+                <!-- No Products Found will be displayed for null and undefined values as well -->
             </div>
         </div>
     </div>
