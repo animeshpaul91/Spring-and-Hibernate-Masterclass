@@ -26,6 +26,10 @@ export class ProductService {
     );
   }
 
+  searchProducts(theKeyword: string): Observable<Product[]> {
+    throw new Error('Method not implemented.');
+  }
+
   getProductCategories(): Observable<ProductCategory[]> {
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
       map(response => response._embedded.productCategory)
