@@ -7,9 +7,11 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 const routes: Routes = [
+    {path: 'search/:keyword', component: ProductListComponent},
     {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
     {path: 'category', component: ProductListComponent},
     {path: 'products', component: ProductListComponent},
@@ -23,7 +25,8 @@ const routes: Routes = [
   declarations: [ // list of all components in this application
     AppComponent,
     ProductListComponent,
-    ProductCategoryMenuComponent
+    ProductCategoryMenuComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application
