@@ -13,4 +13,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
     // behind the scenes spring will execute a query similar to select * from product where category_id=2; and
     // expose the endpoint - http://localhost:8080/api/products/search/findByCategoryId?id=2  2 is an example here
+
+    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
+    // select * from Product p where p.name LIKE CONCAT('%', :name, '%')
 }
