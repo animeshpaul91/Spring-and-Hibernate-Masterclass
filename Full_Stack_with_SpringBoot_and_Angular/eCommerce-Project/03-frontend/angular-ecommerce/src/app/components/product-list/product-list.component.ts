@@ -53,9 +53,11 @@ export class ProductListComponent implements OnInit {
 
     // now get the products for the given category ID
     this.productService.getProductList(this.currentCategoryId).subscribe( // getProductList() method is invoked once you subscribe
-      data => {
+      data => {  // 
         this.products = data; // assign results to the Product Array 
-      }
+      },
+      err => console.error("Observer got error: " + err),
+      () => console.error("Observer got complete notification")
     )
   }
 }
