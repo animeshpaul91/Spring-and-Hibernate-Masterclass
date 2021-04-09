@@ -22,6 +22,12 @@ export class ProductService {
     return this.getProducts(searchURL);
   }
 
+  getProductPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> { // this method maps type JSON data from the SpringBoot REST service to a product array
+    // need to build the URL based on category ID, page and size
+    const searchURL: string = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
+    return this.httpClient.get<GetResponseProducts>(searchURL);
+  }
+
   searchProducts(theKeyword: string): Observable<Product[]> {
     const searchURL: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
     return this.getProducts(searchURL);
@@ -50,6 +56,12 @@ export class ProductService {
 interface GetResponseProducts { // will help unwrap JSON data from REST API and make use of the _embedded entry that comes back from the API
   _embedded: {
     products: Product[]; // data gets binded to the Products Array defined in this project
+  },
+  page: { // refactoring interface to support pagination
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
   }
 }
 
