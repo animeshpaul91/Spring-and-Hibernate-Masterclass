@@ -33,6 +33,12 @@ export class ProductService {
     return this.getProducts(searchURL);
   }
 
+  searchProductsPaginate(page: number, pageSize: number, theKeyword: string): Observable<GetResponseProducts> { // this method maps type JSON data from the SpringBoot REST service to a product array
+    // need to build the URL based on keyword, page and size
+    const searchURL: string = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}&page=${page}&size=${pageSize}`;
+    return this.httpClient.get<GetResponseProducts>(searchURL);
+  }
+
   private getProducts(searchURL: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchURL).pipe(
       map(response => response._embedded.products)
