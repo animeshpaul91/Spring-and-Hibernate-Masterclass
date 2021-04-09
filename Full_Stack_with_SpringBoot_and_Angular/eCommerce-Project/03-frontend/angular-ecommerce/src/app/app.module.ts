@@ -8,15 +8,17 @@ import { ProductService } from './services/product.service';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 const routes: Routes = [
-    {path: 'search/:keyword', component: ProductListComponent}, // route will be handled by Product List Component
-    {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
-    {path: 'category', component: ProductListComponent},
-    {path: 'products', component: ProductListComponent},
-    {path: '', redirectTo: '/products', pathMatch: 'full'},
-    {path: '**', redirectTo: '/products', pathMatch: 'full'} // generic wildcard
+  {path: 'products/:id', component: ProductDetailsComponent}, 
+  {path: 'search/:keyword', component: ProductListComponent}, 
+  {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
+  {path: 'category', component: ProductListComponent},
+  {path: 'products', component: ProductListComponent},
+  {path: '', redirectTo: '/products', pathMatch: 'full'},
+  {path: '**', redirectTo: '/products', pathMatch: 'full'} // generic wildcard
 
     // The order of the routes is important. The order has to be starting from the most specific to generic. 
 ]
@@ -26,7 +28,8 @@ const routes: Routes = [
     AppComponent,
     ProductListComponent,
     ProductCategoryMenuComponent,
-    SearchComponent
+    SearchComponent,
+    ProductDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application
