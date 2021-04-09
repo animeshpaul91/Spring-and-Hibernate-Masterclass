@@ -10,10 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
-  currentCategoryId: number;
-  currentCategoryName: string;
-  searchMode: boolean;
+  products: Product[] = [];
+  currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
+  currentCategoryName: string = "Books";
+  searchMode: boolean = false;
+
+  // new properties for pagination
+  pageNumber: number = 1;
+  pageSize: number = 10;
+  totalElements: number = 0;  
 
   constructor(private productService: ProductService,
     private route: ActivatedRoute) { } // inject activated route
@@ -57,19 +63,33 @@ export class ProductListComponent implements OnInit {
     }
 
     else {
-      // not category ID available. Default category ID to 1
+      // no category ID available. Default category ID to 1
       this.currentCategoryId = 1;
       this.currentCategoryName = 'Books';
     }
 
+
+    // check if we have a different category than previous
+    // Nott: Angular will reuse a component if its currently being viewed
+    // if we havea different ctaegory id than previous, then set page Number to 1
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.pageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+    console.log(`currentCategoryId=${this.currentCategoryId}, pageNumber=${this.pageNumber}`);
+
+
     // now get the products for the given category ID
-    this.productService.getProductList(this.currentCategoryId).subscribe( // getProductList() method is invoked once you subscribe
-      data => {  // 
-        this.products = data; // assign results to the Product Array 
-      },
-      err => console.error("Observer got error: " + err),
-      () => console.error("Observer got complete notification")
-    )
+    this.productService.getProductListPaginate(this.pageNumber - 1, this.pageSize, this.currentCategoryId).subscribe(this.processResult());
+  }
+  processResult() {
+    return data => {
+      this.products = data._embedded.products;
+      this.pageNumber = data.page.number + 1; // spring data rest has pages zero based while angular has it 1-based
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
+    };
   }
 
   handleSearchProducts() {

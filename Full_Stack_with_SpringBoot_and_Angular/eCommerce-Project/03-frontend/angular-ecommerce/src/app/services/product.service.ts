@@ -22,7 +22,7 @@ export class ProductService {
     return this.getProducts(searchURL);
   }
 
-  getProductPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> { // this method maps type JSON data from the SpringBoot REST service to a product array
+  getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> { // this method maps type JSON data from the SpringBoot REST service to a product array
     // need to build the URL based on category ID, page and size
     const searchURL: string = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
     return this.httpClient.get<GetResponseProducts>(searchURL);
