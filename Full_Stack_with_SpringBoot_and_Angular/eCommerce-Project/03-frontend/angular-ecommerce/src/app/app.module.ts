@@ -36,7 +36,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application
     BrowserModule, 
     HttpClientModule, // add Httpclient module for making API requests. This module becomes available to the application and can be injected across the application
-    NgbModule // exposes the exported declarations (classes, interfaces and constraints) and makes them available in the current module
+    NgbModule         // exposes the exported declarations (classes, interfaces and constraints) and makes them available in the current module
   ],
   providers: [ProductService], // add Product Service to help this get injected in any part of the application
   bootstrap: [AppComponent]

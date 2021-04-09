@@ -27,6 +27,28 @@
                 <!-- ? Guards against null and undefined values in property paths. It is called safe navigation operator-->
                 <!-- No Products Found will be displayed for null and undefined values as well -->
             </div>
+
+            <!-- begin footer -->
+                <div class="footer-pagination">
+                    <div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-9" style="padding-left: 30%">
+                                    
+                                    <ngb-pagination [(page)]="pageNumber"
+                                                    [(pageSize)]="pageSize"
+                                                    [collectionSize]="totalElements"
+                                                    (pageChange)="listProducts()">
+
+                                    </ngb-pagination>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- end footer -->
         </div>
     </div>
 </div>
