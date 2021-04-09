@@ -10,7 +10,6 @@ import { ProductCategory } from '../common/product-category';
 })
 
 export class ProductService {
-
   private baseUrl: string = "http://localhost:8080/api/products";
 
   private categoryUrl: string = "http://localhost:8080/api/product-category";
@@ -39,6 +38,10 @@ export class ProductService {
       map(response => response._embedded.productCategory)
     );
 
+  }
+
+  getProduct(productId: number) {
+    throw new Error('Method not implemented.');
   }
 
 }
