@@ -164,3 +164,9 @@ INSERT INTO product (sku, name, description, image_url, active, units_in_stock, 
 
 select * from product;
 select * from product_category;
+
+select * from product where category_id=1;
+
+select * from product where category_id=2;
+
+select * from product where category_id=3;
