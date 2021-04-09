@@ -40,8 +40,9 @@ export class ProductService {
 
   }
 
-  getProduct(productId: number) {
-    throw new Error('Method not implemented.');
+  getProduct(productId: number): Observable<Product> {
+    const productUrl: string = `${this.baseUrl}/${productId}`;
+    return this.httpClient.get<Product>(productUrl); // do not need to unwrap JSON to component object as this does not have embedded in it. 
   }
 
 }
