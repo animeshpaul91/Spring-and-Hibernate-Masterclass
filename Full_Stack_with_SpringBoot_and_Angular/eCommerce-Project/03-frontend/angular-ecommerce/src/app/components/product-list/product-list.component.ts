@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -24,6 +26,7 @@ export class ProductListComponent implements OnInit {
   previousKeyword: string = null;
 
   constructor(private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute) { } // inject activated route
   // The current active route that loaded the component. Useful for accessing route parameters. 
   // Activated Route provides access to info about a route associated with a component that is loaded in an outlet.
@@ -116,5 +119,8 @@ export class ProductListComponent implements OnInit {
 
   addToCart(product: Product) {
     console.log(`Adding to Cart: ${product.name}, ${product.unitPrice}`);
+
+    const cartItem: CartItem = new CartItem(product)
+    this.cartService.addToCart(cartItem);
   }
 }

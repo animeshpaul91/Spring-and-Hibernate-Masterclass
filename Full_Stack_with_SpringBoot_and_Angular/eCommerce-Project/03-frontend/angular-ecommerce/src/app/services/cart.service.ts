@@ -6,7 +6,7 @@ import { CartItem } from '../common/cart-item';
   providedIn: 'root'
 })
 export class CartService {
-  cartItems: CartItem[];
+  cartItems: CartItem[] = [];
   totalPrice: Subject<Number> = new Subject<number>();
   totalQuantity: Subject<Number> = new Subject<number>();
 
