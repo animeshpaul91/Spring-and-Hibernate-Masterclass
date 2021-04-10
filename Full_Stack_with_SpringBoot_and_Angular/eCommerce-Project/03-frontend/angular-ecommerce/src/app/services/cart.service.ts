@@ -7,8 +7,8 @@ import { CartItem } from '../common/cart-item';
 })
 export class CartService {
   cartItems: CartItem[] = [];
-  totalPrice: Subject<Number> = new Subject<number>();
-  totalQuantity: Subject<Number> = new Subject<number>();
+  totalPrice: Subject<number> = new Subject<number>();
+  totalQuantity: Subject<number> = new Subject<number>();
 
   constructor() { }
 
