@@ -12,10 +12,12 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 const routes: Routes = [
-  {path: "cart-details", component: CartDetailsComponent}, 
+  {path: "checkout", component: CheckoutComponent},
+  {path: "cart-details", component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent}, 
   {path: 'search/:keyword', component: ProductListComponent}, 
   {path: 'category/:id/:name', component: ProductListComponent}, // when path matches its going to create a new instance of ProductListComponent
@@ -35,7 +37,8 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application

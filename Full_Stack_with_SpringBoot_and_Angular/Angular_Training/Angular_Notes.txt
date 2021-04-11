@@ -30,3 +30,15 @@ Component:
 	5. ActivatedRoute - The current active route that loaded the component. Useful for accessing route parameters. 
 
 	When the user clicks on the link in the RouterLink, the new instance of the component gets created and replaed in RouterOutlet. Only updates a section of the page.
+
+	
+Reactive Forms - (Key Components)
+
+FormControl tracks the value and validation status of an individual form control.
+
+FormGroup tracks the same values and status for a collection of form controls.
+
+FormArray tracks the same values and status for an array of form controls.
+
+ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
+
