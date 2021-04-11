@@ -1,7 +1,9 @@
 package com.luv2code.ecommerce.config;
 
+import com.luv2code.ecommerce.entity.Country;
 import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.entity.ProductCategory;
+import com.luv2code.ecommerce.entity.State;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -38,18 +40,20 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         // disable HTTP methods for PUT, POST and DELETE
 
-        config.getExposureConfiguration()
-                .forDomainType(Product.class)
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))) // for single item endpoints like ID
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)); // for collection endpoints
-
-        config.getExposureConfiguration()
-                .forDomainType(ProductCategory.class)
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))) // for single item endpoints like ID
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)); // for collection endpoints
+        disableHTTPMethods(Product.class, config, unsupportedActions);
+        disableHTTPMethods(ProductCategory.class, config, unsupportedActions);
+        disableHTTPMethods(Country.class, config, unsupportedActions);
+        disableHTTPMethods(State.class, config, unsupportedActions);
 
         // call an internal helper method
         exposeIds(config);
+    }
+
+    private void disableHTTPMethods(Class theClass, RepositoryRestConfiguration config, HttpMethod[] unsupportedActions) {
+        config.getExposureConfiguration()
+                .forDomainType(theClass)
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))) // for single item endpoints like ID
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions)); // for collection endpoints
     }
 
     private void exposeIds(RepositoryRestConfiguration config) {
