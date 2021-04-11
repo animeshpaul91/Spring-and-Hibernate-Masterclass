@@ -32,13 +32,17 @@ Component:
 	When the user clicks on the link in the RouterLink, the new instance of the component gets created and replaed in RouterOutlet. Only updates a section of the page.
 
 	
-Reactive Forms - (Key Components)
+	Reactive Forms - (Key Components)
 
-FormControl tracks the value and validation status of an individual form control.
+	1. FormControl - Individual control that tracks the value and validation status
+	2. FormGroup - A collection of controls. Can create nested groups. 
+	3. others
 
-FormGroup tracks the same values and status for a collection of form controls.
+	FormControl tracks the value and validation status of an individual form control.
 
-FormArray tracks the same values and status for an array of form controls.
+	FormGroup tracks the same values and status for a collection of form controls.
 
-ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
+	FormArray tracks the same values and status for an array of form controls.
+
+	ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
 
