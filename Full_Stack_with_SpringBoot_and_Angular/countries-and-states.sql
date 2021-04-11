@@ -275,3 +275,9 @@ SET foreign_key_checks = 1;
 
 select * from country;
 select * from state where country_id=4;
+
+select * from product;
+select * from product_category;
+select * from product where category_id=1;
+select * from product where category_id=2;
+select * from product where category_id=3;
