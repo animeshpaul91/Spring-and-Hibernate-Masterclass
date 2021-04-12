@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { Luv2ShopFormService } from 'src/app/services/luv2-shop-form.service';
 
 @Component({
@@ -18,6 +19,8 @@ export class CheckoutComponent implements OnInit {
   creditCardMonths: number[] = [];
 
   countries: Country[] = [];
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder, private luv2ShopFormService: Luv2ShopFormService) { }
 
@@ -28,26 +31,26 @@ export class CheckoutComponent implements OnInit {
           firstName: [''], // these are individual form controls
           lastName: [''],
           email: ['']
-        }), 
-        
+        }),
+
         shippingAddress: this.formBuilder.group({
-          street: [''],  
+          street: [''],
           city: [''],
           state: [''],
           country: [''],
           zipCode: [''],
-        }), 
+        }),
 
         billingAddress: this.formBuilder.group({
-          street: [''],  
+          street: [''],
           city: [''],
           state: [''],
           country: [''],
           zipCode: [''],
-        }), 
+        }),
 
         creditCard: this.formBuilder.group({
-          cardType: [''],  
+          cardType: [''],
           nameOnCard: [''],
           cardNumber: [''],
           securityCode: [''],
@@ -111,6 +114,29 @@ export class CheckoutComponent implements OnInit {
         this.creditCardMonths = data;
       }
     );
+  }
+
+  getStates(formGroupName: string) {
+    const formGroup = this.checkoutFormGroup.get(formGroupName); // to know which type to address
+    const countryCode = formGroup.value.country.code;
+    const countryName = formGroup.value.country.name;
+
+    console.log(`{formGroupName} country code: ${countryCode}`);
+    console.log(`{formGroupName} country code: ${countryName}`);
+
+    this.luv2ShopFormService.getStates(countryCode).subscribe(
+      data => {
+        if (formGroupName == "shippingAddress") {
+          this.shippingAddressStates = data;
+        }
+        else {
+          this.billingAddressStates = data;
+        }
+
+        // set first item by default 
+        formGroup.get('state').setValue(data[0]);
+      }
+    )
   }
 
   onSubmit() {
