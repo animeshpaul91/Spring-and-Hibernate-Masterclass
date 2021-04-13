@@ -14,6 +14,17 @@
                             <div class="input-space">
                                 <input formControlName="firstName" type="text">
                                 <!--firstName is the form control name defined in Component class -->
+                                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
+                                    <!--.dirty will be true when the field value is changed and .touched will be true when the field value loses focus -->
+                                    <div *ngIf="firstName.errors.required">
+                                        First Name is Required
+                                    </div>
+
+                                    <div *ngIf="firstName.errors.minlength">
+                                        First Name must be at least 2 characters long
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -23,6 +34,17 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="lastName" type="text">
+                                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-1">
+                                    <!--.dirty will be true when the field value is changed and .touched will be true when the field value loses focus -->
+                                    <div *ngIf="lastName.errors.required">
+                                        Last Name is Required
+                                    </div>
+
+                                    <div *ngIf="lastName.errors.minlength">
+                                        Last Name must be at least 2 characters long
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -32,6 +54,17 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <input formControlName="email" type="text">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                                    <!--.dirty will be true when the field value is changed and .touched will be true when the field value loses focus -->
+                                    <div *ngIf="email.errors.required">
+                                        Email is Required
+                                    </div>
+
+                                    <div *ngIf="email.errors.pattern"> <!-- This is the same validator that is used in the Component class-->
+                                        Email must be a valid email address
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
                     </div>

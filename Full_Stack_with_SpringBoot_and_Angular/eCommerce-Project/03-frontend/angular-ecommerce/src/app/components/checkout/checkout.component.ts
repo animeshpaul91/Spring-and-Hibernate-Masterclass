@@ -87,6 +87,11 @@ export class CheckoutComponent implements OnInit {
     );
   }
 
+  // Getters for Form Validation
+  get firstName() { return this.checkoutFormGroup.get('customer.firstName'); }
+  get lastName() { return this.checkoutFormGroup.get('customer.lastName'); }
+  get email() { return this.checkoutFormGroup.get('customer.email'); }
+
   copyShippingAddressToBillingAddress(event) {
     if (event.target.checked) {
       this.checkoutFormGroup.controls.billingAddress.setValue(this.checkoutFormGroup.controls.shippingAddress.value);
@@ -148,6 +153,12 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     console.log("Handling the submit button");
+
+    if (this.checkoutFormGroup.invalid) {
+      // touching all fields triggers the display of error messages
+      this.checkoutFormGroup.markAllAsTouched();
+    }
+
     console.log(this.checkoutFormGroup.get('customer').value);
     console.log(`The Email Address is: ${this.checkoutFormGroup.get('customer').value.email}`);
     console.log(`The Shipping Address country is: ${this.checkoutFormGroup.get('shippingAddress').value.country.name}`);
