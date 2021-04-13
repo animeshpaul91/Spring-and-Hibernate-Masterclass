@@ -16,7 +16,7 @@
                                 <!--firstName is the form control name defined in Component class -->
                                 <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
                                     <!--.dirty will be true when the field value is changed and .touched will be true when the field value loses focus -->
-                                    <div *ngIf="firstName.errors.required">
+                                    <div *ngIf="firstName.errors.required || firstName.errors.notOnlyWhiteSpace"> <!-- This is the same as the method name on the custom validator class -->
                                         First Name is Required
                                     </div>
 
@@ -36,7 +36,7 @@
                                 <input formControlName="lastName" type="text">
                                 <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-1">
                                     <!--.dirty will be true when the field value is changed and .touched will be true when the field value loses focus -->
-                                    <div *ngIf="lastName.errors.required">
+                                    <div *ngIf="lastName.errors.required || lastName.errors.notOnlyWhiteSpace">
                                         Last Name is Required
                                     </div>
 
