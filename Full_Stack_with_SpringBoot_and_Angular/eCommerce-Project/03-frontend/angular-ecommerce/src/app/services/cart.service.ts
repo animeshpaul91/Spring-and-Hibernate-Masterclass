@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { CartItem } from '../common/cart-item';
 
 @Injectable({
@@ -7,9 +7,9 @@ import { CartItem } from '../common/cart-item';
 })
 export class CartService {
   cartItems: CartItem[] = [];
-  totalPrice: Subject<number> = new Subject<number>();
-  totalQuantity: Subject<number> = new Subject<number>();
-
+  totalPrice: Subject<number> = new BehaviorSubject<number>(0); // Behavior Subject requires a default value if not instantiated
+  totalQuantity: Subject<number> = new BehaviorSubject<number>(0); // Behavior Subject requires a default value if not instantiated
+  // Behavior subject sends the most recent event to all subscribers of this Subject. 
   constructor() { }
 
   addToCart(cartItem: CartItem) {
