@@ -30,5 +30,6 @@ public class OrderItem {
     private Long productId;
 
     @ManyToOne
+    @JoinColumn(name = "order_id") // order_id is the foreign key in order_item table in the database
     private Order order;
 }

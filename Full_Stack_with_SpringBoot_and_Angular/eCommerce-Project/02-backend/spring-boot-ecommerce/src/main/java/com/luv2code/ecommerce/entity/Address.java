@@ -29,4 +29,8 @@ public class Address {
 
     @Column(name = "zip_code")
     private String zipCode;
+
+    @OneToOne
+    @PrimaryKeyJoinColumn // join using primary keys. By default keys have same name
+    private Order order;
 }

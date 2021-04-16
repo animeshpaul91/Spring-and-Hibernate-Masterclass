@@ -45,6 +45,18 @@ public class Order {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order") // order is a field in OrderItem class
     private Set<OrderItem> orderItems = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToOne
+    @JoinColumn(name = "shipping_address_id", referencedColumnName = "id") // referenced column name is id in the actual Address Table
+    private Address shippingAddress;
+
+    @OneToOne
+    @JoinColumn(name = "billing_address_id", referencedColumnName = "id") // referenced column name is id in the actual Address Table
+    private Address billingAddress;
+
     public void add(OrderItem item) {
         if (item != null) {
             if (orderItems == null) orderItems = new HashSet<>();
