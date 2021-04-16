@@ -78,3 +78,6 @@ CREATE TABLE `order_item` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 desc address;
+desc orders;
+
+desc order_item;
