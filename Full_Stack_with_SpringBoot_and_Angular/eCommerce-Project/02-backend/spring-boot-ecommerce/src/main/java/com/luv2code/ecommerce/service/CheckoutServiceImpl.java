@@ -3,11 +3,15 @@ package com.luv2code.ecommerce.service;
 import com.luv2code.ecommerce.dao.CustomerRepository;
 import com.luv2code.ecommerce.dto.Purchase;
 import com.luv2code.ecommerce.dto.PurchaseResponse;
+import com.luv2code.ecommerce.entity.Customer;
 import com.luv2code.ecommerce.entity.Order;
+import com.luv2code.ecommerce.entity.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Set;
+import java.util.UUID;
 
 @Service // Spring will pick this up during Component Scanning
 public class CheckoutServiceImpl implements CheckoutService{
@@ -31,20 +35,26 @@ public class CheckoutServiceImpl implements CheckoutService{
         order.setOrderTrackingNumber(orderTrackingNumber);
 
         // populate order with order items
+        Set<OrderItem> orderItems = purchase.getOrderItems();
+        orderItems.forEach(item -> order.add(item)); // add purchase.OrderItems to order so that we can insert order to db
 
         // populate order with billing Address and shipping address
+        order.setBillingAddress(purchase.getBillingAddress());
+        order.setShippingAddress(purchase.getShippedAddress());
 
         // populate customer with order
+        Customer customer = purchase.getCustomer();
+        customer.addOrder(order);
 
         // save to database
+        customerRepository.save(customer);
 
         // return response
-        return null;
+        return new PurchaseResponse(orderTrackingNumber);
     }
 
     private String generateOrderTrackingNumber() {
-
         // generate a random UUID (UUID version-4) Universal Unique Identifier
-
+        return UUID.randomUUID().toString();
     }
 }
