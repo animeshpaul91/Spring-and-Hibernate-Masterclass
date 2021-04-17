@@ -31,6 +31,6 @@ public class Address {
     private String zipCode;
 
     @OneToOne
-    @PrimaryKeyJoinColumn // join using primary keys. By default keys have same name
+    @PrimaryKeyJoinColumn // join using primary keys. By default keys have same . (addressId, orderId) will be unique
     private Order order;
 }

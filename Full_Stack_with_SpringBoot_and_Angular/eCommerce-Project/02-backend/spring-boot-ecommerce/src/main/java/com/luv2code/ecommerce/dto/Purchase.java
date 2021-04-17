@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Data
 public class Purchase {
-
     private Customer customer;
     private Address shippedAddress;
     private Address billingAddress;
