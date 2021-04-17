@@ -1,22 +1,22 @@
 {
    "customer":{
-      "firstName":"afasa",
-      "lastName":"afasa",
-      "email":"afasa@test.com"
+      "firstName":"Animesh",
+      "lastName":"Paul",
+      "email":"ani.nitmz@gmail.com"
    },
    "shippingAddress":{
-      "street":"afasa",
-      "city":"afasa",
-      "state":"Alberta",
-      "country":"Canada",
-      "zipCode":"afasa"
+      "street":"89 Springville Avenue",
+      "city":"Buffalo",
+      "state":"New York",
+      "country":"USA",
+      "zipCode":"14226"
    },
    "billingAddress":{
-      "street":"fsfsf",
-      "city":"sfdsf",
-      "state":"Acre",
-      "country":"Brazil",
-      "zipCode":"19111"
+      "street":"89 Springville Avenue",
+      "city":"Buffalo",
+      "state":"New York",
+      "country":"USA",
+      "zipCode":"14226"
    },
    "order":{
       "totalPrice":36.98,
