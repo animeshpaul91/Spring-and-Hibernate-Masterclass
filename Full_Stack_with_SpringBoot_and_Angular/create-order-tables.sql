@@ -83,3 +83,11 @@ desc orders;
 desc order_item;
 
 desc customer;
+
+select * from orders;
+select * from customer;
+select * from address;
+select * from country;
+select * from state;
+select * from order_item;
+select * from product;

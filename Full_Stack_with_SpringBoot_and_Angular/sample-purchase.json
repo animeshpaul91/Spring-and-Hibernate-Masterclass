@@ -1,8 +1,8 @@
 {
    "customer":{
-      "firstName":"Animesh",
-      "lastName":"Paul",
-      "email":"ani.nitmz@gmail.com"
+      "firstName":"Boris",
+      "lastName":"Laishram",
+      "email":"borislg@gmail.com"
    },
    "shippingAddress":{
       "street":"89 Springville Avenue",
@@ -19,8 +19,8 @@
       "zipCode":"14226"
    },
    "order":{
-      "totalPrice":36.98,
-      "totalQuantity":2
+      "totalPrice":18.98,
+      "totalQuantity":4
    },
    "orderItems":[
       {

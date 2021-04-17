@@ -49,11 +49,11 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "shipping_address_id", referencedColumnName = "id") // referenced column name is id in the actual Address Table
     private Address shippingAddress;
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "billing_address_id", referencedColumnName = "id") // referenced column name is id in the actual Address Table
     private Address billingAddress;
 
