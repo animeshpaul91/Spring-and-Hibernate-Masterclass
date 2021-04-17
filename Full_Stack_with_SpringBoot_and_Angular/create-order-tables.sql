@@ -81,3 +81,5 @@ desc address;
 desc orders;
 
 desc order_item;
+
+desc customer;
