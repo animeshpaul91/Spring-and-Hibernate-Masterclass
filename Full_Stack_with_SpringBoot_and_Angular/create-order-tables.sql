@@ -91,3 +91,5 @@ select * from country;
 select * from state;
 select * from order_item;
 select * from product;
+
+delete from orders;

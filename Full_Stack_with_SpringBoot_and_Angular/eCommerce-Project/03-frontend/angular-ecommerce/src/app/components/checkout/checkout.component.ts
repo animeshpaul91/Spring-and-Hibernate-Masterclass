@@ -186,12 +186,6 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    // console.log(this.checkoutFormGroup.get('customer').value);
-    // console.log("The email address is " + this.checkoutFormGroup.get('customer').value.email);
-
-    // console.log("The shipping address country is " + this.checkoutFormGroup.get('shippingAddress').value.country.name);
-    // console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name);
-
     // set up order
     let order = new Order();
     order.totalPrice = this.totalPrice;
@@ -201,49 +195,58 @@ export class CheckoutComponent implements OnInit {
     const cartItems = this.cartService.cartItems;
 
     // create orderItems from cartItems
-    // long way
-    /* let orderItems: OrderItem[];
-    for(let i = 0; i < cartItems.length; i++) {
+    // - long way
+    /*
+    let orderItems: OrderItem[] = [];
+    for (let i=0; i < cartItems.length; i++) {
       orderItems[i] = new OrderItem(cartItems[i]);
-    } */
+    }
+    */
 
-    // short way of doing same thing
-    let orderItems: OrderItem[] = cartItems.map(cartItem => new OrderItem(cartItem));
+    // - short way of doing the same thingy
+    let orderItems: OrderItem[] = cartItems.map(tempCartItem => new OrderItem(tempCartItem));
 
-    // setup purchase
+    // set up purchase
     let purchase = new Purchase();
 
-    // populate purchase
-    purchase.customer = this.checkoutFormGroup.controls["customer"].value;
+    // populate purchase - customer
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
 
-    // populate purchase - shipping Address
-    // polish the data to get state and country names
-    purchase.shippingAddress = this.checkoutFormGroup.controls["shippingAddress"].value;
-    const shippingStateObject = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
-    const shippingCountryObject = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
-    purchase.shippingAddress.state = shippingStateObject.state; // this will be the name of the state in string
-    purchase.shippingAddress.country = shippingCountryObject.country;
+    // populate purchase - shipping address
+    purchase.shippingAddress = this.checkoutFormGroup.controls['shippingAddress'].value;
+    const shippingState: State = JSON.parse(JSON.stringify(purchase.shippingAddress.state));
+    const shippingCountry: Country = JSON.parse(JSON.stringify(purchase.shippingAddress.country));
+    purchase.shippingAddress.state = shippingState.name;
+    purchase.shippingAddress.country = shippingCountry.name;
 
-    // populate purchase - shipping Address
-    purchase.billingAddress = this.checkoutFormGroup.controls["billingAddress"].value;
-    const billingStateObject = JSON.parse(JSON.stringify(purchase.billingAddress.state));
-    const billingCountryObject = JSON.parse(JSON.stringify(purchase.billingAddress.country));
-    purchase.billingAddress.state = billingStateObject.state; // this will be the name of the state in string
-    purchase.billingAddress.country = billingCountryObject.country;
+    console.log(shippingState.name);
+    console.log(shippingCountry.name);
 
-    // populate purchase - Order and OrderItems
+    // populate purchase - billing address
+    purchase.billingAddress = this.checkoutFormGroup.controls['billingAddress'].value;
+    const billingState: State = JSON.parse(JSON.stringify(purchase.billingAddress.state));
+    const billingCountry: Country = JSON.parse(JSON.stringify(purchase.billingAddress.country));
+    purchase.billingAddress.state = billingState.name;
+    purchase.billingAddress.country = billingCountry.name;
+
+    console.log(billingState.name);
+    console.log(billingState.name);
+
+    // populate purchase - order and orderItems
     purchase.order = order;
     purchase.orderItems = orderItems;
 
-    // call REST API via checkout Service
+    // call REST API via the CheckoutService
     this.checkoutService.placeOrder(purchase).subscribe({
       next: response => {
-        alert(`Your Order has been received. \n Order Tracking Number is: ${response.orderTrackingNumber}`)
+        alert(`Your order has been received.\nOrder tracking number: ${response.orderTrackingNumber}`);
+
         // reset cart
         this.resetCart();
+
       },
       error: err => {
-        alert(`There was an error: ${err.message}`)
+        alert(`There was an error: ${err.message}`);
       }
     }
     );
