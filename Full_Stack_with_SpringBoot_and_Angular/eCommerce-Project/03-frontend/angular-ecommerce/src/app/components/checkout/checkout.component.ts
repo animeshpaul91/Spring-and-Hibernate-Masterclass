@@ -7,6 +7,8 @@ import { Luv2ShopValidators } from 'src/app/validators/luv2-shop-validators';
 import { CartService } from 'src/app/services/cart.service';
 import { CheckoutService } from 'src/app/services/checkout.service';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/common/order';
+import { OrderItem } from 'src/app/common/order-item';
 
 @Component({
   selector: 'app-checkout',
@@ -190,12 +192,22 @@ export class CheckoutComponent implements OnInit {
     // console.log("The shipping address state is " + this.checkoutFormGroup.get('shippingAddress').value.state.name);
 
     // set up order
-
+    let order = new Order();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQuantity;
 
     // get cart items
-
+    const cartItems = this.cartService.cartItems;
 
     // create orderItems from cartItems
+    // long way
+    /* let orderItems: OrderItem[];
+    for(let i = 0; i < cartItems.length; i++) {
+      orderItems[i] = new OrderItem(cartItems[i]);
+    } */
+
+    // short way of doing same thing
+    let orderItems: OrderItem[] = cartItems.map(cartItem => new OrderItem(cartItem));
 
     // setup purchase
 
