@@ -1,3 +1,5 @@
+Udemy Special Discount: http://prks.io/2nJNA3B
+
 Component: 
 
 1. Main Player in an Angular Application. Has 2 parts
