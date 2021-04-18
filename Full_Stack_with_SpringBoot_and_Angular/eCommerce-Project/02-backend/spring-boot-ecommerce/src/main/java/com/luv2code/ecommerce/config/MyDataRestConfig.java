@@ -1,9 +1,6 @@
 package com.luv2code.ecommerce.config;
 
-import com.luv2code.ecommerce.entity.Country;
-import com.luv2code.ecommerce.entity.Product;
-import com.luv2code.ecommerce.entity.ProductCategory;
-import com.luv2code.ecommerce.entity.State;
+import com.luv2code.ecommerce.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -47,6 +44,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         disableHTTPMethods(ProductCategory.class, config, unsupportedActions);
         disableHTTPMethods(Country.class, config, unsupportedActions);
         disableHTTPMethods(State.class, config, unsupportedActions);
+        disableHTTPMethods(Order.class, config, unsupportedActions);
 
         // call an internal helper method
         exposeIds(config);
