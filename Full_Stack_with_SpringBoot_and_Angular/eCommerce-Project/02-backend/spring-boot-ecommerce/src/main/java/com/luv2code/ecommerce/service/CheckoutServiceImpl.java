@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Service // Spring will pick this up during Component Scanning
-public class CheckoutServiceImpl implements CheckoutService{
+public class CheckoutServiceImpl implements CheckoutService {
 
     private CustomerRepository customerRepository; // this is our DAO Handle
 
