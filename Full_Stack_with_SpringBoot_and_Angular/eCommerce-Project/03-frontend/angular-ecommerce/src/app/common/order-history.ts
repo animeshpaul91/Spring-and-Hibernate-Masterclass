@@ -5,4 +5,6 @@ export class OrderHistory {
     totalPrice: number;
     totalQuantity: number;
     dateCreated: Date;
+
+    // We only want to display these items on the UI, there are a ton of other items in the REST GET response.
 }
