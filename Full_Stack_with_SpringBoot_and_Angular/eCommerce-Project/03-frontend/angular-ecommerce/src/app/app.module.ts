@@ -33,7 +33,7 @@ const oktaConfig = Object.assign(
       const router = injector.get(Router);
 
       // Redirect the user to your custom login page
-      router.navigate(['/login']);
+      router.navigate(['/login']); // route a user to login page if they are not authenticated
     }
   }, myAppConfig.oidc);
 
