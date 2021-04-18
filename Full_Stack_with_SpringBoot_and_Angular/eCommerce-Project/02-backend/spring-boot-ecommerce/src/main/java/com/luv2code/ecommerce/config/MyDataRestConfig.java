@@ -5,6 +5,7 @@ import com.luv2code.ecommerce.entity.Product;
 import com.luv2code.ecommerce.entity.ProductCategory;
 import com.luv2code.ecommerce.entity.State;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -27,6 +28,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
      * @since 3.4
      */
 
+    @Value("${allowed.origins}") // injecting from properties file
+    private String[] allowedOrigins;
+
     private final EntityManager entityManager;
 
     @Autowired
@@ -39,7 +43,6 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] unsupportedActions = {HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PUT};
 
         // disable HTTP methods for PUT, POST and DELETE
-
         disableHTTPMethods(Product.class, config, unsupportedActions);
         disableHTTPMethods(ProductCategory.class, config, unsupportedActions);
         disableHTTPMethods(Country.class, config, unsupportedActions);
@@ -47,6 +50,10 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         // call an internal helper method
         exposeIds(config);
+
+        // configure CORS mapping
+        cors.addMapping(config.getBasePath() + "/**").allowedOrigins(allowedOrigins);
+        // now we can remove @CrossOrigin from JPA Repositories
     }
 
     private void disableHTTPMethods(Class theClass, RepositoryRestConfiguration config, HttpMethod[] unsupportedActions) {
