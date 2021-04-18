@@ -24,6 +24,7 @@ import {
 } from '@okta/okta-angular';
 
 import myAppConfig from './config/my-app-config';
+import { MembersPageComponent } from './components/members-page/members-page.component';
 
 const oktaConfig = Object.assign(
   {
@@ -62,7 +63,8 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    MembersPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes), // this functions as the root Router. These set of routes are available to the entire application
