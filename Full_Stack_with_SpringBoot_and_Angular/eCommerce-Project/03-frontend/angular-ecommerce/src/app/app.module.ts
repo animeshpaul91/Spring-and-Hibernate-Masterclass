@@ -20,7 +20,8 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 import {
   OKTA_CONFIG, 
   OktaAuthModule, 
-  OktaCallbackComponent
+  OktaCallbackComponent,
+  OktaAuthGuard
 } from '@okta/okta-angular';
 
 import myAppConfig from './config/my-app-config';
@@ -28,7 +29,7 @@ import { MembersPageComponent } from './components/members-page/members-page.com
 
 const oktaConfig = Object.assign(
   {
-    onAuthRequired: (injector) => {
+    onAuthRequired: (oktaAuth, injector) => {
       const router = injector.get(Router);
 
       // Redirect the user to your custom login page
@@ -37,6 +38,7 @@ const oktaConfig = Object.assign(
   }, myAppConfig.oidc);
 
 const routes: Routes = [
+  {path: "members", component: MembersPageComponent, canActivate: [ OktaAuthGuard ]}, // OktaAuthGuard - if authenticated, gives access to route else sends back to login page
   {path: "login/callback", component: OktaCallbackComponent}, // once user is authenticated, they are redirected to your app. Okta does all token parsing
   {path: "login", component: LoginComponent},
   {path: "checkout", component: CheckoutComponent},
