@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/checkout")
 public class CheckoutController {
 
-    private CheckoutService checkoutService;
+    private final CheckoutService checkoutService;
 
     @Autowired
     public CheckoutController(CheckoutService checkoutService) {
