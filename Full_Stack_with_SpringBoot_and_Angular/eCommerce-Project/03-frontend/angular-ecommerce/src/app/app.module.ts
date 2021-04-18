@@ -39,6 +39,7 @@ const oktaConfig = Object.assign(
   }, myAppConfig.oidc);
 
 const routes: Routes = [
+  {path: "order-history", component: OrderHistoryComponent, canActivate: [ OktaAuthGuard ]},
   {path: "members", component: MembersPageComponent, canActivate: [ OktaAuthGuard ]}, // OktaAuthGuard - if authenticated, gives access to route else sends back to login page
   {path: "login/callback", component: OktaCallbackComponent}, // once user is authenticated, they are redirected to your app. Okta does all token parsing
   {path: "login", component: LoginComponent},
