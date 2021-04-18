@@ -10,7 +10,21 @@ export class CartService {
   totalPrice: Subject<number> = new BehaviorSubject<number>(0); // Behavior Subject requires a default value if not instantiated
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0); // Behavior Subject requires a default value if not instantiated
   // Behavior subject sends the most recent event to all subscribers of this Subject. 
-  constructor() { }
+
+  // storage: Storage = sessionStorage;
+  storage: Storage = localStorage; // use localStorage instead to enable data survive across different browser tabs and restarts
+
+  constructor() { 
+    // read data from storage
+    let data = JSON.parse(this.storage.getItem('cartItems'));
+    
+    if (data != null) {
+      this.cartItems = data;
+      
+      // compute totals based on totals read from storage
+      this.computeCartTotals();
+    }
+  }
 
   addToCart(cartItem: CartItem) {
     // check if we already have the item in our cart
@@ -51,6 +65,14 @@ export class CartService {
 
     // log cart data just for debugging purposes
     this.logCartData(totalPriceValue, totalQuantityValue);
+
+    // persist cart data
+    this.persistCartItems();
+  }
+
+
+  persistCartItems() {
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   logCartData(totalPriceValue: number, totalQuantityValue: number) {
