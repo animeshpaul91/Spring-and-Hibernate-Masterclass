@@ -40,7 +40,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // force a non-empty response body for 401's to make the response body more friendly
         Okta.configureResourceServer401ResponseBody(http);
 
-        // disable CSRF since we are not using Cookies for Session Tracking
+        /*  By default, CSRF is enabled. CSRF performs checks on POST requests using cookies
+            Since we are not using Cookies for Session Tracking, CSRF says request is unauthorized
+            So, we need to disable CSRF
+         */
         http.csrf().disable();
     }
 }
