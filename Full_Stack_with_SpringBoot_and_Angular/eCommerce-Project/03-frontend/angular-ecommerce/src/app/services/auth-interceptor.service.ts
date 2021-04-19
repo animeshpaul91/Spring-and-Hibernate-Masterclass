@@ -6,16 +6,16 @@ import { from, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthInterceptorService implements HttpInterceptor{
+export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private oktaAuth: OktaAuthService) { }
-  
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return from(this.handleAccess(request, next));
+    return from(this.handleAccess(request, next)); // intercept all outgoing HTTP requests
   }
 
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    
+
     // Only add an access token for secured endpoints
     const securedEndPoints = ['http://localhost:8080/api/orders'];
 
@@ -33,6 +33,6 @@ export class AuthInterceptorService implements HttpInterceptor{
 
     }
 
-    return next.handle(request).toPromise();
+    return next.handle(request).toPromise(); // forward to next interceptor. If no next interceptor exists, then make the API call
   }
 }
