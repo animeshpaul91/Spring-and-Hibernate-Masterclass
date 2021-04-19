@@ -1,5 +1,6 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
 import { from, Observable } from 'rxjs';
 
 @Injectable({
@@ -7,13 +8,31 @@ import { from, Observable } from 'rxjs';
 })
 export class AuthInterceptorService implements HttpInterceptor{
 
-  constructor() { }
+  constructor(private oktaAuth: OktaAuthService) { }
   
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return from(this.handleAccess(request, next));
   }
-  
+
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler): Promise<HttpEvent<any>> {
-    throw new Error('Method not implemented.');
+    
+    // Only add an access token for secured endpoints
+    const securedEndPoints = ['http://localhost:8080/api/orders'];
+
+    if (securedEndPoints.some(url => request.urlWithParams.includes(url))) {
+      // get access token 
+      const accessToken = await this.oktaAuth.getAccessToken(); // getAccessToken is an asynchronous method
+      // await will cause to wait until the processing finishes before proceeding
+
+      // clone the request and add the new header with access token. The request is immutable, so cloning is required
+      request = request.clone({
+        setHeaders: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      });
+
+    }
+
+    return next.handle(request).toPromise();
   }
 }
