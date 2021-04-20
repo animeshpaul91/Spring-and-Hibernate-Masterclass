@@ -48,3 +48,8 @@ Component:
 
 	ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
 
+
+	Annotations in Javascript are called Decorators.
+
+	ES (Ecma Script). Ecma Script is a standard. Javascript is implementation.
+
