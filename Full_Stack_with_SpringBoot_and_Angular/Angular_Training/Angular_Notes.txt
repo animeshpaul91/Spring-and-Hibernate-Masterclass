@@ -85,3 +85,5 @@ Component:
 	Every Angular Component (@Component) has to be associated with an Angular Module.
 
 	Modern Javascript does not have the concept of interfaces. Every Typescript Component Class implements OnInit to implement the ngOnInit() method
+
+	A module is a collection of classes. 
