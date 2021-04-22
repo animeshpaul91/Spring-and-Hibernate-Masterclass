@@ -53,3 +53,35 @@ Component:
 
 	ES (Ecma Script). Ecma Script is a standard. Javascript is implementation.
 
+
+
+	Angular CLI Project Structure 
+
+	app - all app code goes into this - Components, modules
+	assets - images
+	environments - configuration (dev, prod, uat)
+
+	tsconfig.json  - configuration specifying transpilation (conversion of typescript to javascript)
+	package.json - project meta-data.  dependencies, similar to pom.xml (npm install)
+	node_modules - all imported dependencies lie here
+	index.html - loaded when launching app
+	main.ts - loaded when launching app. This is the root module. Bootstraping.
+	polyfills.ts - checks for code compatibility across browsers
+	styles.css - central css style file
+
+	test.ts - starting point for running unit tests
+
+	Angular Components: 
+
+	1. Component - Template (HTML), Style(CSS), Code (Typescript)
+	@Component is a decorator to indicate that the current class is a Component.
+	selector is the tag name.
+
+	interpolation: 
+	in HTML - {{ variable }}, variable refers to a variable in TS code. This is binding.
+
+	Shortcut to generate component - ng g c <componentName> // This cannot be rolled back
+
+	Every Angular Component (@Component) has to be associated with an Angular Module.
+
+	Modern Javascript does not have the concept of interfaces. Every Typescript Component Class implements OnInit to implement the ngOnInit() method
