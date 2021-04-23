@@ -1,2 +1,7 @@
-User Name: <input type="text" name="username">
-Password: <input type="password" name="password">
+User Name: <input type="text" name="username" [(ngModel)]="username"> <!-- Banana in a box. Two way data binding to variable username -->
+
+Password: <input type="password" name="password" [(ngModel)]="username">
+
+<button (click) = "handleLogin()" > Login </button> <!-- This is event binding -->
+
+<!-- Username: {{ username }} This is interpolation --> 
