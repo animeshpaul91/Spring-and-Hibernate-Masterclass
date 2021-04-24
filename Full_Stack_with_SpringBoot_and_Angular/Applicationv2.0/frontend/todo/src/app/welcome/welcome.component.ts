@@ -26,10 +26,15 @@ export class WelcomeComponent implements OnInit {
 
   getWelcomeMessage() {
     this.service.executeHelloWorldBeanService().subscribe( //asynchronous functions always take a callback function as a parameter
-        response => this.handleSuccessfullResponse(response) // do this when data returns. Do this when a succesful response returns back
+        response => this.handleSuccessfullResponse(response), // do this when data returns. Do this when a succesful response returns back
+        error => this.handleErrorResponse(error)
     );
 
     console.log("Last line of get Welcome Message"); // This might get called before beecause executeHelloWorldBeanService() is asynchronous
+  }
+
+  handleErrorResponse(error: any): void {
+    this.welcomeMessageFromService = error.error.message;
   }
 
   handleSuccessfullResponse(response: HelloWorldBean) {
