@@ -8,7 +8,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 // welcome
 const routes: Routes = [
-  {path: "", component: LoginComponent}, 
+  {path: "", component: LoginComponent},  // can activate, RouteGuard Service
   {path: "login", component: LoginComponent}, 
   {path: "welcome/:name", component: WelcomeComponent},
   {path: "todos", component: ListTodosComponent},
