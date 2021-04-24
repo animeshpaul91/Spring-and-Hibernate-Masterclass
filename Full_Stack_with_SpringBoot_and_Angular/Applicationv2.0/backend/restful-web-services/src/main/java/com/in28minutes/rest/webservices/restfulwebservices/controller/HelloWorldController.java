@@ -1,11 +1,13 @@
 package com.in28minutes.rest.webservices.restfulwebservices.controller;
 
 import com.in28minutes.rest.webservices.restfulwebservices.Beans.HelloWorldBean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class HelloWorldController {
     // GET Method
     // URI - /hello-world

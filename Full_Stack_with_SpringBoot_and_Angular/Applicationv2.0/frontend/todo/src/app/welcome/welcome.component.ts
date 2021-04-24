@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { WelcomeDataService } from '../services/data/welcome-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -12,14 +13,18 @@ export class WelcomeComponent implements OnInit {
   name: string = "";
 
   // Activated Route
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private service: WelcomeDataService) { }
 
   // Modern Javascript does not have the concept of interfaces. Every Typescript Component Class implements OnInit to implement the ngOnInit() method
 
   ngOnInit(): void {
     // This method runs when this component initializes
-    console.log(this.message);
+    // console.log(this.message);
     this.name = this.route.snapshot.params["name"];
+  }
+
+  getWelcomeMessage() {
+    this.service.executeHelloWorldBeanService().subscribe();
   }
 
 }
