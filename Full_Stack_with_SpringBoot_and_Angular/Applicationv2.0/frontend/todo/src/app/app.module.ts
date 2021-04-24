@@ -10,7 +10,7 @@ import { ErrorComponent } from './error/error.component';
 import { ListTodosComponent } from './list-todos/list-todos.component';
 
 @NgModule({
-  declarations: [
+  declarations: [ // Module is a collection of Components
     AppComponent,
     WelcomeComponent,
     LoginComponent,
@@ -18,11 +18,16 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
     ListTodosComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, // All components in App module require these modules
     AppRoutingModule, 
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] // dictates which component gets loaded when this module is loaded. App module gets bootstrapped in main.ts
 })
 export class AppModule { }
+
+/* 
+    Angular Modules are a Collection of related components, directives, services which are dedicated for a specific purpose.
+    If you want to reuse a component, you need to import the corresponding angular module.
+*/
