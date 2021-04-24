@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WelcomeDataService } from '../services/data/welcome-data.service';
+import { HelloWorldBean, WelcomeDataService } from '../services/data/welcome-data.service';
 
 @Component({
   selector: 'app-welcome',
@@ -11,6 +11,7 @@ export class WelcomeComponent implements OnInit {
 
   message: string = "Some welcome message";
   name: string = "";
+  welcomeMessageFromService: string = "";
 
   // Activated Route
   constructor(private route: ActivatedRoute, private service: WelcomeDataService) { }
@@ -24,7 +25,15 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessage() {
-    this.service.executeHelloWorldBeanService().subscribe();
+    this.service.executeHelloWorldBeanService().subscribe( //asynchronous functions always take a callback function as a parameter
+        response => this.handleSuccessfullResponse(response) // do this when data returns. Do this when a succesful response returns back
+    );
+
+    console.log("Last line of get Welcome Message"); // This might get called before beecause executeHelloWorldBeanService() is asynchronous
+  }
+
+  handleSuccessfullResponse(response: HelloWorldBean) {
+    this.welcomeMessageFromService = response.message;
   }
 
 }
