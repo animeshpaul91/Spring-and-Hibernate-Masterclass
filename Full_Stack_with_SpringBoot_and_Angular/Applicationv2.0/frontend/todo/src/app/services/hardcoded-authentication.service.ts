@@ -3,7 +3,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({ // This can be injected to any Component class. Makes this component available for Dependency Injection
-  providedIn: 'root'
+  providedIn: 'root' // Available at Root Level
 })
 
 export class HardcodedAuthenticationService {
