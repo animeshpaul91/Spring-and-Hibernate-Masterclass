@@ -49,4 +49,8 @@ export class ListTodosComponent implements OnInit {
     this.router.navigate(["/todos/update", id]);
   }
 
+  addTodo() {
+    this.router.navigate(["/todos/update", -1]); // when id is -1 new todo creation is required. This is used to reuse the same functionality for update
+  }
+
 }
