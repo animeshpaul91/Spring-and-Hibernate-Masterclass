@@ -56,4 +56,19 @@ public class Todo {
     public void setDone(boolean done) {
         isDone = done;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Todo)) return false;
+
+        Todo todo = (Todo) o;
+
+        return id.equals(todo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
