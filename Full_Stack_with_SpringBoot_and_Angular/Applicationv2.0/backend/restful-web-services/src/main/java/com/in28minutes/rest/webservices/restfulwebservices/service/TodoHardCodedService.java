@@ -13,7 +13,7 @@ public class TodoHardCodedService {
     private static final List<Todo> todos = new ArrayList<>();
     private static long idCounter = 0;
 
-    static { // only works for static members of the class
+    static { // only works for static members of the class. behaves as a class initializer
         todos.add(new Todo(++idCounter, "in28minutes", "Learn to Dance", new Date(), false));
         todos.add(new Todo(++idCounter, "in28minutes", "Learn about Microservices", new Date(), false));
         todos.add(new Todo(++idCounter, "in28minutes", "Learn about Angular", new Date(), false));
