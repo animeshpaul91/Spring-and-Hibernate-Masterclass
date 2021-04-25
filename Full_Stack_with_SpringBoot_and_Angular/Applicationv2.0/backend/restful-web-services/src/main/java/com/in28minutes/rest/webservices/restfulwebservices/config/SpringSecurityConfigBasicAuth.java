@@ -12,15 +12,16 @@ public class SpringSecurityConfigBasicAuth extends WebSecurityConfigurerAdapter 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         /*
-        * Disable CSRF Tokens
-        * Permit all Options Request (Pre Flight Requests) without Authentication
-        * For all other requests authenticate using basic Auth
+        * Disable CSRF.
+        * Permit all options request (Pre flight requests)
+        * For all other requests, use basic Auth
         * */
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
                 .anyRequest().authenticated()
-                .and().httpBasic();
+                .and()
+                .httpBasic();
     }
 }

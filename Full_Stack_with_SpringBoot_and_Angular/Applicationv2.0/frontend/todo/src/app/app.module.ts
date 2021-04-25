@@ -11,8 +11,9 @@ import { ListTodosComponent } from './list-todos/list-todos.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoComponent } from './todo/todo.component';
+import { HttpIntercepterBasicAuthService } from './services/http/http-intercepter-basic-auth.service';
 
 @NgModule({
   declarations: [ // Module is a collection of Components
@@ -32,7 +33,9 @@ import { TodoComponent } from './todo/todo.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}
+  ],
   bootstrap: [AppComponent] // dictates which component gets loaded when this module is loaded. App module gets bootstrapped in main.ts
 })
 export class AppModule { }

@@ -1,9 +1,9 @@
-package com.in28minutes.rest.webservices.restfulwebservices.HelloWorld;
+package com.in28minutes.rest.webservices.restfulwebservices.basicAuth;
 
-public class HelloWorldBean {
+public class AuthenticationBean {
     private String message;
 
-    public HelloWorldBean(String message) {
+    public AuthenticationBean(String message) {
         this.message = message;
     }
 
