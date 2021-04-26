@@ -34,8 +34,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  handleBasicAuthLogin(): void {
-    // console.log(this.username);
+  handleBasicAuthLogin(): void {    
     this.basicAuthService.executeAuthenticationService(this.username, this.password).subscribe(
       data => {
         console.log(data);
@@ -44,6 +43,21 @@ export class LoginComponent implements OnInit {
       }, 
       
       error => {
+        console.log(error);
+        this.invalidLogin = true;
+      }
+    );
+  }
+
+  handleJWTAuthLogin(): void {
+    this.basicAuthService.executeJWTAuthenticationService(this.username, this.password).subscribe(
+      data => {
+        console.log(data);
+        this.router.navigate(["welcome", this.username]);
+        this.invalidLogin = false;
+      }, 
+      
+      error => {        
         console.log(error);
         this.invalidLogin = true;
       }

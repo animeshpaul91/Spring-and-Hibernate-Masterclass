@@ -47,6 +47,19 @@ export class BasicAuthenticationService {
     );
   }
 
+  executeJWTAuthenticationService(username: string, password: string): Observable<AuthenticationBean> {
+    const URL = `${API_URL}/authenticate`;
+
+    return this.httpClient.post<any>(URL, {username, password}).pipe( // Javascript shortcut to create object with same key name and the value that the variable stores
+      map(data => {      
+        sessionStorage.setItem(AUTHENTICATED_USER, username);
+        sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+        console.log(`Bearer ${data.token}`);
+        return data;
+      })
+    );
+  }
+
   getAuthenticatedUser() {
     return sessionStorage.getItem(AUTHENTICATED_USER);
   }
