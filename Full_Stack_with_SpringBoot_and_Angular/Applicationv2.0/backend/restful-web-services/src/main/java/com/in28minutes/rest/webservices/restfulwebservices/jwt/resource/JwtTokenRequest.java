@@ -35,3 +35,7 @@ public class  JwtTokenRequest implements Serializable {
     }
 }
 
+
+//{
+//    "token": ""
+//}
