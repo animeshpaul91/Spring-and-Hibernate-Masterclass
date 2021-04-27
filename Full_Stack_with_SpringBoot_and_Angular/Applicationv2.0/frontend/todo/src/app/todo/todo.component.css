@@ -1,5 +1,5 @@
 /* Automatically added by Angular on invalid fields */
 
-.ng-invalid:not(form) {
+.form-control.ng-invalid:not(form) {
     border-left: 5 px solid red;
 }
