@@ -33,10 +33,8 @@ public class TodoJPAResource {
 
 	// DELETE
 	@DeleteMapping("/jpa/users/{username}/todos/{id}")
-	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id) { // we need response
-																									// entity because we
-																									// are not returning
-																									// any content
+	public ResponseEntity<Void> deleteTodo(@PathVariable String username, @PathVariable long id) {
+		// we need response entity because we are not returning any content
 		todoJpaRepository.deleteById(id);
 		return ResponseEntity.noContent().build(); // successful delete sends a response with no content (HTTP code 204)
 	}
@@ -45,11 +43,10 @@ public class TodoJPAResource {
 	@PostMapping("/jpa/users/{username}/todos")
 	public ResponseEntity<Void> createTodo(@PathVariable String username, @RequestBody Todo todo) {
 		todo.setId(-1L);
+		todo.setUsername(username);
 		Todo createdTodo = todoJpaRepository.save(todo);
 
-		// Append {id} to current Resource URI i.e
-		// http://localhost:8080/users/{username}/todos/{id}
-		todo.setUsername(username);
+		// Append {id} to current Resource URI i.e http://localhost:8080/users/{username}/todos/{id}
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdTodo.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
