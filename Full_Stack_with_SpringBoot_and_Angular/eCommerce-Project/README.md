@@ -29,7 +29,7 @@ The RESTful services were exposed directly from the MySQL database using Spring 
 
 ### Technologies Used: 
 #### Backend Components: SpringBoot, Hibernate, Maven, Tomcat, MySQL Database, Okta (for security features).
-#### Frontend Components: Angular, Typescript, HTML5, CSS3.
+#### Frontend Components: Angular, Typescript, HTML5, CSS3, Bootstrap.
 
 ### A few snippets of the application: 
 
