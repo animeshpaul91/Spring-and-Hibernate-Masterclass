@@ -32,6 +32,12 @@ The RESTful services were exposed directly from the MySQL database using Spring 
 #### Frontend Components: Angular, Typescript, HTML5, CSS3.
 
 ### A few snippets of the application: 
+
 #### Home Page
 ![Home_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-1.png?raw=true)
 
+#### Login Page
+![Login_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-2.png?raw=true)
+
+#### Checkout Cart
+![Checkout_Cart](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-3.png?raw=true)
