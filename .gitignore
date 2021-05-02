@@ -2,7 +2,10 @@
 # Edit at https://www.gitignore.io/?templates=java,macos,maven,eclipse,netbeans,intellij,visualstudiocode
 
 
-*.png
+Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/03-frontend/angular-ecommerce/src/assets/
+Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/Releasev1.0/angular-image-assets/
+Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/Releasev2.0/luv2shop-template/assets/
+Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/Releasev2.0/product-image-assets/
 
 Assignments
 docs
