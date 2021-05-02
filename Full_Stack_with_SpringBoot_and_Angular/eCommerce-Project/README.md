@@ -33,5 +33,5 @@ The RESTful services were exposed directly from the MySQL database using Spring 
 
 ### A few snippets of the application: 
 #### Home Page
-
+![Home_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-1.png?raw=true)
 
