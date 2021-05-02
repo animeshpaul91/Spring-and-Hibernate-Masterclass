@@ -21,10 +21,10 @@
 ### A few snippets of the application: 
 
 #### Home Page
-![Home_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-1.png?raw=true)
+![Home_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/login.png?raw=true)
 
 #### Login Page
-![Login_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-2.png?raw=true)
+![Login_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/login.png?raw=true)
 
-#### Checkout Cart
-![Checkout_Cart](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/eCommerce-Project/snaps/sample-3.png?raw=true)
+#### Add new Task
+![Create_todo](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/todos.png?raw=true)
