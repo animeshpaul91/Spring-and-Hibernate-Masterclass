@@ -1,6 +1,6 @@
 # Full-Stack e-Commerce Application
 
-## This project centered around building a full-stack e-Commerce online shopping website with the main features as mentioned under: 
+<p> This project is centered around building a full-stack e-Commerce online shopping website with the main features as mentioned under: </p>
 
 1. Display Product (Inventory) data in grid layout
 2. Search for Products by Category
@@ -13,23 +13,35 @@
 9. View Order History
 
 
-## These are security/access-control features in the application. 
+<p> These are security/access-control features in the application. </p>
 1. User Registration
 2. Login/Logout
 3. VIP Member Access
 
-### Security features were built by leveraging OpenID Connect(OIDC) on top on OAuth2.0
+<p> Security features were built by leveraging OpenID Connect(OIDC) on top on OAuth2.0 </p>
 
-### Brief Description of Application:
+<p> Brief Description of Application: </p>
 
-This project centered around developing a simple e-Commerce online shopping website as a full-stack web application by exposing inventory data from RDBMS through REST APIs using a SpringBoot backend application which gets consumed by a frontend Angular application. Implemented features to display product data, search for products, add to shopping cart, checkout cart and form validation. In addition, security features were built by leveraging Okta with OAuth2.0.
+<p> This project centered around developing a simple e-Commerce online shopping website as a full-stack web application by exposing inventory data from RDBMS through REST APIs using a SpringBoot backend application which gets consumed by a frontend Angular application. Implemented features to display product data, search for products, add to shopping cart, checkout cart and form validation. In addition, security features were built by leveraging Okta with OAuth2.0. </p>
 
-The RESTful services were exposed directly from the MySQL database using Spring DATA JPA REST. The client (Angular App) consumes this data to display and populate the shopping items in its components.
+<p> The RESTful services were exposed directly from the MySQL database using Spring DATA JPA REST. The client (Angular App) consumes this data to display and populate the shopping items in its components. </p>
 
 
 ### Technologies Used: 
-#### Backend Components: SpringBoot, Hibernate, Maven, Tomcat, MySQL Database, Okta (for security features).
-#### Frontend Components: Angular, Typescript, HTML5, CSS3, Bootstrap.
+#### Backend Components: 
+1. SpringBoot
+2. Hibernate
+3. Maven
+4. Tomcat
+5. MySQL
+6. Okta (for security features).
+
+#### Frontend Components
+1. Angular 11
+2. Typescript
+3. Bootstrap.
+4. HTML5
+5. CSS3
 
 ### A few snippets of the application: 
 
