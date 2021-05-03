@@ -1,6 +1,6 @@
-# Simple ToDo Full-Stack Application
+# Simple Task Tracker Web Application
 
-## This project centered around building a simple ToDo Full-Stack Application. This is a basic CRUD application equipped with a front end design which allows a user to perform the following tasks:
+## This project centered around building a simple task tracker Full-Stack Application. This is a basic CRUD application equipped with a front end design which allows a user to perform the following tasks:
 
 1. Create new tasks
 2. Display existing tasks
@@ -27,4 +27,4 @@
 ![Login_Page](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/login.png?raw=true)
 
 #### Add new Task
-![Create_todo](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/todos.png?raw=true)
+![Create_task](https://github.com/animeshpaul91/Spring-and-Hibernate-Masterclass/blob/main/Full_Stack_with_SpringBoot_and_Angular/Applicationv2.0/snaps/todos.png?raw=true)
