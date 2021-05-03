@@ -20,7 +20,6 @@
 2. Maven
 3. Tomcat
 4. H2 Database
-5. 
 
 #### Frontend Components: 
 1. Angular
