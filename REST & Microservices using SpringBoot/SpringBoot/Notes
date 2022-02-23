@@ -1,0 +1,51 @@
+Section - 2 Introduction to Web Services:
+
+Web service - Software System designed to support interoperable machine to machine interaction over a network. Key points:
+1. Designed for machine to machine or (application to application) interaction.
+2. Should be interoperable - Not platform/technology dependent. 
+3. Should allow communication over a network. 
+
+Formats for Request and Response. These are also called Message Exchange Formats. 
+1. XML
+2. JSON
+
+Key details are specified in service definition - Request/Response Format, Request Structure, Response Structure, Endpoints.
+
+Mediums of Exposure/Transport - HTTP and MQ. Communication occurrs over queue.
+
+Web Service Groups:
+1. SOAP
+* Only uses XML as the request exchange format.
+* Poses restrictions on the format of the XML which is exchanged between service provider and consumer.
+* Does not pose a restriction on the Transport. You can use HTTP as well as MQ.
+* Defines specific XML request and response structure.
+* The request structure contains Envelope, Header and body. 
+* WSDL is used as Service Definition. 
+
+2. REST
+* Think in terms of Resources.
+* Makes use of only HTTP.
+* No specific data exchange format. JSON is popular.
+* No standard service definition. WADL (Web Application Definition Language), Swagger exists.
+
+
+./mvnw -q spring-boot:run -Dserver.port=8081
+https://skl.sh/dhruvrathee05211
+
+https://skl.sh/dhruvrathee01227
+
+
+Schwinn Men's Ranger 26" Mountain Bike
+
+Specifications:
+Dimensions (Overall): 51.9 Inches (L), 28.7 Inches (H) x 23.0 Inches (W)
+Weight: 32.3 Pounds
+Holds up to: 250.0 Pounds
+Bicycle Frame/Component Features: Quick Release Seat, Adjustable Seat Height, Alloy Rims, Suspension Fork, Adjustable Handlebars, Ergonomic Seat, Chain Guard
+Bicycle Frame Material: Aluminum
+Bicycle Chain Material: Alloy
+Rim Material: Metal Alloy
+Gear Speeds: 21
+Pedal Material: Plastic
+
+Pickup only
