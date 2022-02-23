@@ -249,3 +249,6 @@ nbdist/
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
+
+# Ignore all PDF Files
+*.pdf
